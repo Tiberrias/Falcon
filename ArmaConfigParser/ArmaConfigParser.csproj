@@ -45,6 +45,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tokens\ITokenizer.cs" />
     <Compile Include="Tokens\Model\ClassOpeningToken.cs" />
     <Compile Include="Tokens\Model\ClosingToken.cs" />
     <Compile Include="Tokens\Model\DataToken.cs" />

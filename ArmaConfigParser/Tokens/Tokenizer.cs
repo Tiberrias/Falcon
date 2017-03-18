@@ -8,7 +8,7 @@ using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Tokens
 {
-    public class Tokenizer
+    public class Tokenizer : ITokenizer
     {
         private readonly PeekableStringReaderAdapter _reader;
         private readonly string _text;
@@ -55,21 +55,21 @@ namespace ArmaConfigParser.Tokens
                 switch (nextCharacter)
                 {
                     case 'c':
-                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        peekedString = _reader.PeekWithBufferingUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
                         _resultTokens.Add(ParseIfClassOpeningToken(peekedString));
                         break;
                     case '}':
                         _resultTokens.Add(ParseIfClosingToken());
                         break;
                     case 't':
-                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        peekedString = _reader.PeekWithBufferingUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
                         _resultTokens.Add(ParseIfTypeOpeningToken(peekedString));
                         break;
                     case '"':
                         _resultTokens.Add(ParseIfStandaloneStringToken());
                         break;
                     default:
-                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        peekedString = _reader.PeekWithBufferingUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
                         _resultTokens.Add(ParseIfVariableToken(peekedString));
                         break;
                 }
@@ -102,13 +102,11 @@ namespace ArmaConfigParser.Tokens
             {
                 return variableValue.Trim('"');
             }
-            int intVariable;
-            if (Int32.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out intVariable))
+            if (Int32.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out var intVariable))
             {
                 return intVariable;
             }
-            double doubleVariable;
-            if (Double.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out doubleVariable))
+            if (Double.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out var doubleVariable))
             {
                 return doubleVariable;
             }
@@ -118,7 +116,7 @@ namespace ArmaConfigParser.Tokens
         private Token ParseIfStandaloneStringToken()
         {
             _reader.Read();
-            string peekedString = _reader.PeekBufferedUntilEndOfString();
+            string peekedString = _reader.PeekWithBufferingUntilEndOfString();
             if (peekedString == null)
                 throw new ArgumentException("Invalid config syntax");
             _reader.ConsumeBuffer();
@@ -169,8 +167,7 @@ namespace ArmaConfigParser.Tokens
             }
             return parsedToken;
         }
-
-
+        
         private void SkipWhitespaces()
         {
             while (Char.IsWhiteSpace((char)_reader.Peek()))

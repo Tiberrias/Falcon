@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using ArmaConfigParser;
 using ArmaConfigParser.Tokens;
 using ArmaConfigParser.Tokens.Model;
 
@@ -77,7 +74,7 @@ namespace ArmaConfigParserTest.Tokens
         [Test]
         public void Tokenize_LargeExample_TokenizedProperly()
         {
-            Tokenizer tokenizer = new Tokenizer(ArmaConfigParserTest.Properties.Resources.ParsingExampleLargeCase);
+            Tokenizer tokenizer = new Tokenizer(Properties.Resources.ParsingExampleLargeCase);
             
             List<Token> tokens = tokenizer.Tokenize().ToList();
             

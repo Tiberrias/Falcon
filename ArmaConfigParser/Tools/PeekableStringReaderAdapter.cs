@@ -18,7 +18,7 @@ namespace ArmaConfigParser.Tools
             _bufferedCharsIntegers = new Queue<int>();
         }
 
-        public int PeekBuffered()
+        public int PeekWithBuffering()
         {
             int readCharInteger = _underlyingReader.Read();
             if (readCharInteger == -1)
@@ -27,7 +27,7 @@ namespace ArmaConfigParser.Tools
             return readCharInteger;
         }
 
-        public int PeekUnBuffered()
+        public int PeekBufferTip()
         {
             return _underlyingReader.Peek();
         }
@@ -51,20 +51,19 @@ namespace ArmaConfigParser.Tools
             _bufferedCharsIntegers.Clear();
         }
 
-        public string PeekBufferedUntilEndOfString()
+        public string PeekWithBufferingUntilEndOfString()
         {
             StringBuilder fetchedString = new StringBuilder();
-            int peekedValue = PeekBuffered();
-            char peekedChar;
+            int peekedValue = PeekWithBuffering();
             while (peekedValue != -1)
             {
-                peekedChar = (char)peekedValue;
+                var peekedChar = (char)peekedValue;
                 if ('"' == peekedChar)
                 {
-                    int forwardPeekedValue = PeekUnBuffered();
+                    int forwardPeekedValue = PeekBufferTip();
                     if (forwardPeekedValue != -1 && (char)forwardPeekedValue == '"')
                     {
-                        PeekBuffered();
+                        PeekWithBuffering();
                         fetchedString.Append('"');
                     }
                     else
@@ -73,15 +72,15 @@ namespace ArmaConfigParser.Tools
                     }
                 }
                 fetchedString.Append(peekedChar);
-                peekedValue = PeekBuffered();
+                peekedValue = PeekWithBuffering();
             }
             return fetchedString.ToString();
         }
 
-        public string PeekBufferedUntil(char breakCharacter)
+        public string PeekWithBufferingUntil(char breakCharacter)
         {
             StringBuilder fetchedString = new StringBuilder();
-            int peekedValue = PeekBuffered();
+            int peekedValue = PeekWithBuffering();
             char peekedChar;
             while(peekedValue != -1)
             {
@@ -91,22 +90,22 @@ namespace ArmaConfigParser.Tools
                     break;
                 }
                 fetchedString.Append(peekedChar);
-                peekedValue = PeekBuffered();
+                peekedValue = PeekWithBuffering();
             }
             return fetchedString.ToString();
         }
 
-        public string PeekBufferedUntil(char[] breakCharacterArray)
+        public string PeekWithBufferingUntil(char[] breakCharacterArray)
         {
             StringBuilder fetchedString = new StringBuilder();
-            int peekedValue = PeekBuffered();
+            int peekedValue = PeekWithBuffering();
             char peekedChar;
             while (peekedValue != -1)
             {
                 peekedChar = (char)peekedValue;
                 if (peekedChar == '"')
                 {
-                     fetchedString.Append(PeekBufferedUntilEndOfString());
+                     fetchedString.Append(PeekWithBufferingUntilEndOfString());
                 }
                 else if (breakCharacterArray.Contains(peekedChar))
                 {
@@ -116,7 +115,7 @@ namespace ArmaConfigParser.Tools
                 {
                     fetchedString.Append(peekedChar);
                 }
-                peekedValue = PeekBuffered();
+                peekedValue = PeekWithBuffering();
             }
             return fetchedString.ToString();
         }
