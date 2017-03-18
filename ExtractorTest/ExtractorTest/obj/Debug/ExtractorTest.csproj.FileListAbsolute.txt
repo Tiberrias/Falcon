@@ -34,3 +34,15 @@ C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ExtractorTest\Extra
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.csproj.GenerateResource.Cache
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.exe
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.pdb
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\ExtractorTest.exe.config
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\ExtractorTest.exe
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\ExtractorTest.pdb
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\ArmaConfigParser.dll
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\nunit.framework.dll
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\ArmaConfigParser.pdb
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\bin\Debug\nunit.framework.xml
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.csprojResolveAssemblyReference.cache
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.Properties.Resources.resources
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.csproj.GenerateResource.Cache
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.exe
+C:\Users\Tiberrias\Documents\Repos\Falcon\ExtractorTest\ExtractorTest\obj\Debug\ExtractorTest.pdb

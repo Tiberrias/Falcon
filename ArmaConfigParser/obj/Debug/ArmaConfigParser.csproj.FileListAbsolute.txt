@@ -21,3 +21,10 @@ C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ArmaConfigParser\ob
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ArmaConfigParser\obj\Debug\ArmaConfigParser.csproj.GenerateResource.Cache
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ArmaConfigParser\obj\Debug\ArmaConfigParser.dll
 C:\Users\Tiberrias\Documents\Visual Studio 2017\Projects\ACC\ArmaConfigParser\obj\Debug\ArmaConfigParser.pdb
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\bin\Debug\ArmaConfigParser.dll
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\bin\Debug\ArmaConfigParser.pdb
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\obj\Debug\ArmaConfigParser.csprojResolveAssemblyReference.cache
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\obj\Debug\ArmaConfigParser.Properties.Resources.resources
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\obj\Debug\ArmaConfigParser.csproj.GenerateResource.Cache
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\obj\Debug\ArmaConfigParser.dll
+C:\Users\Tiberrias\Documents\Repos\Falcon\ArmaConfigParser\obj\Debug\ArmaConfigParser.pdb
