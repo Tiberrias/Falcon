@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ArmaConfigParser;
 using ArmaConfigParser.Tokens;
+using ArmaConfigParser.Tokens.Model;
 
 
 namespace ArmaConfigParserTest.Tokens

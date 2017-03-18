@@ -1,9 +1,5 @@
-﻿using ArmaConfigParser.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Tools
 {
@@ -19,21 +15,21 @@ namespace ArmaConfigParser.Tools
 
         private bool HasValidStructure()
         {
-            int TreeDepth = 0;
+            int treeDepth = 0;
             foreach (Token token in _tokenizedConfig)
             {
                 if (token is OpeningToken)
                 {
-                    TreeDepth++;
+                    treeDepth++;
                 }
                 else if (token is ClosingToken)
                 {
-                    TreeDepth--;
+                    treeDepth--;
                 }
-                if (TreeDepth < 0)
+                if (treeDepth < 0)
                     return false;
             }
-            return TreeDepth == 0;
+            return treeDepth == 0;
         }
 
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using ArmaConfigParser.Tokens;
+using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools;
 
 namespace ArmaConfigParserTest.Tools

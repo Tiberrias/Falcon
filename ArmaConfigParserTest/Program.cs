@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArmaConfigParser;
 using ArmaConfigParser.Tokens;
 using System.IO;
+using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools;
 
 namespace ArmaConfigParserTest

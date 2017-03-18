@@ -20,11 +20,11 @@ namespace ArmaConfigParser.Tools
 
         public int PeekBuffered()
         {
-            int ReadCharInteger = _underlyingReader.Read();
-            if (ReadCharInteger == -1)
+            int readCharInteger = _underlyingReader.Read();
+            if (readCharInteger == -1)
                 return -1;
-            _bufferedCharsIntegers.Enqueue(ReadCharInteger);
-            return ReadCharInteger;
+            _bufferedCharsIntegers.Enqueue(readCharInteger);
+            return readCharInteger;
         }
 
         public int PeekUnBuffered()

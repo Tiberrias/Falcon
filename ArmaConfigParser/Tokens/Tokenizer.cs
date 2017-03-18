@@ -4,36 +4,36 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Tokens
 {
     public class Tokenizer
     {
-        
-        private PeekableStringReaderAdapter Reader;
-        private string Text;
+        private readonly PeekableStringReaderAdapter _reader;
+        private readonly string _text;
         private List<Token> _resultTokens;
 
         public Tokenizer(string text)
         {
-            Text = text;
+            _text = text;
             StringReader underlyingReader = new StringReader(text);
-            Reader = new PeekableStringReaderAdapter(underlyingReader);
+            _reader = new PeekableStringReaderAdapter(underlyingReader);
         }
 
         public Tokenizer(StringReader stringReader)
         {
-            Text = null;
+            _text = null;
             if (stringReader != null)
             {
                 StringReader underlyingReader = stringReader;
-                Reader = new PeekableStringReaderAdapter(underlyingReader);
+                _reader = new PeekableStringReaderAdapter(underlyingReader);
             }
         }
 
         public bool TextIsValidForTokenize()
         {
-            return StringHelper.HasBalancedCurlyBrackets(Text);
+            return StringHelper.HasBalancedCurlyBrackets(_text);
         }
 
         public IEnumerable<Token> Tokenize()
@@ -42,38 +42,38 @@ namespace ArmaConfigParser.Tokens
                 throw new ArgumentException("Invalid config syntax");
 
             _resultTokens = new List<Token>();
-            string PeekedString;
 
-            while (Reader.Peek() != -1)
+            while (_reader.Peek() != -1)
             {
                 SkipWhitespaces();
-                int peekValue = Reader.Peek();
+                int peekValue = _reader.Peek();
                 if (peekValue == -1)
                     break;
                 char nextCharacter = (char)peekValue;
 
+                string peekedString;
                 switch (nextCharacter)
                 {
                     case 'c':
-                        PeekedString = Reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiter);
-                        _resultTokens.Add(ParseIfClassOpeningToken(PeekedString));
+                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        _resultTokens.Add(ParseIfClassOpeningToken(peekedString));
                         break;
                     case '}':
                         _resultTokens.Add(ParseIfClosingToken());
                         break;
                     case 't':
-                        PeekedString = Reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiter);
-                        _resultTokens.Add(ParseIfTypeOpeningToken(PeekedString));
+                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        _resultTokens.Add(ParseIfTypeOpeningToken(peekedString));
                         break;
                     case '"':
                         _resultTokens.Add(ParseIfStandaloneStringToken());
                         break;
                     default:
-                        PeekedString = Reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiter);
-                        _resultTokens.Add(ParseIfVariableToken(PeekedString));
+                        peekedString = _reader.PeekBufferedUntil(TokenSemantics.ClassnameOrVariableSearchDelimiters);
+                        _resultTokens.Add(ParseIfVariableToken(peekedString));
                         break;
                 }
-                Reader.Read();
+                _reader.Read();
             }
             return _resultTokens;
         }
@@ -85,10 +85,10 @@ namespace ArmaConfigParser.Tokens
             int valueAssignmentPosition = searchedArea.IndexOf('=');
             string variableName = searchedArea.Remove(valueAssignmentPosition);
             string variableValue = searchedArea.Remove(0, valueAssignmentPosition + 1);
-            if(variableName.Contains('"'))
+            if (variableName.Contains('"'))
                 throw new ArgumentException("Invalid config syntax: invalid variable definition");
             object value = FetchVariableFromString(variableValue);
-            Reader.ConsumeBuffer();
+            _reader.ConsumeBuffer();
             return new VariableToken(variableName, value);
         }
 
@@ -102,25 +102,27 @@ namespace ArmaConfigParser.Tokens
             {
                 return variableValue.Trim('"');
             }
-                int intVariable;
-                if (Int32.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out intVariable))
-                    return intVariable;
-                double doubleVariable;
-                if (Double.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out doubleVariable))
-                    return doubleVariable;
-                else
-                    return variableValue;
-
+            int intVariable;
+            if (Int32.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out intVariable))
+            {
+                return intVariable;
+            }
+            double doubleVariable;
+            if (Double.TryParse(variableValue, NumberStyles.Any, CultureInfo.InvariantCulture, out doubleVariable))
+            {
+                return doubleVariable;
+            }
+            return variableValue;
         }
 
         private Token ParseIfStandaloneStringToken()
         {
-            Reader.Read();
-            string PeekedString = Reader.PeekBufferedUntilEndOfString();
-            if(PeekedString == null)
+            _reader.Read();
+            string peekedString = _reader.PeekBufferedUntilEndOfString();
+            if (peekedString == null)
                 throw new ArgumentException("Invalid config syntax");
-            Reader.ConsumeBuffer();
-            return new StandaloneStringToken(PeekedString);
+            _reader.ConsumeBuffer();
+            return new StandaloneStringToken(peekedString);
         }
 
         private Token ParseIfTypeOpeningToken(string searchedArea)
@@ -128,7 +130,7 @@ namespace ArmaConfigParser.Tokens
             Token parsedToken;
             if (StringHelper.ContainsAtTheBeginning(searchedArea, TokenSemantics.TypeOpeningTokenStringDefinition))
             {
-                Reader.ConsumeBuffer();
+                _reader.ConsumeBuffer();
                 parsedToken = new TypeOpeningToken();
             }
             else
@@ -140,13 +142,13 @@ namespace ArmaConfigParser.Tokens
 
         private Token ParseIfClosingToken()
         {
-            char firstCharacter = (char)Reader.Read();
-            int secondCharacterCode = Reader.Read();
-            if(secondCharacterCode == -1)
+            _reader.Read();
+            int secondCharacterCode = _reader.Read();
+            if (secondCharacterCode == -1)
                 throw new ArgumentException("Invalid config syntax: unexpected end");
-            if((char)secondCharacterCode != ';')
+            if ((char)secondCharacterCode != ';')
                 throw new ArgumentException("Invalid config syntax: missing semicolon");
-            Reader.ConsumeBuffer();
+            _reader.ConsumeBuffer();
             return new ClosingToken();
         }
 
@@ -158,7 +160,7 @@ namespace ArmaConfigParser.Tokens
                 string className = searchedArea.Substring(TokenSemantics.ClassOpeningTokenStringDefinition.Length).Trim();
                 if (String.IsNullOrWhiteSpace(className))
                     throw new ArgumentException("Invalid config syntax: empty classname");
-                Reader.ConsumeBuffer();
+                _reader.ConsumeBuffer();
                 parsedToken = new ClassOpeningToken(className);
             }
             else
@@ -168,12 +170,12 @@ namespace ArmaConfigParser.Tokens
             return parsedToken;
         }
 
-        
+
         private void SkipWhitespaces()
         {
-            while (Char.IsWhiteSpace((char)Reader.Peek()))
+            while (Char.IsWhiteSpace((char)_reader.Peek()))
             {
-                Reader.Read();
+                _reader.Read();
             }
         }
     }

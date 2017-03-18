@@ -45,9 +45,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tokens\Token.cs" />
+    <Compile Include="Tokens\Model\ClassOpeningToken.cs" />
+    <Compile Include="Tokens\Model\ClosingToken.cs" />
+    <Compile Include="Tokens\Model\DataToken.cs" />
+    <Compile Include="Tokens\Model\EnclosingToken.cs" />
+    <Compile Include="Tokens\Model\OpeningToken.cs" />
+    <Compile Include="Tokens\Model\StandaloneStringToken.cs" />
+    <Compile Include="Tokens\Model\Token.cs" />
     <Compile Include="Tokens\Tokenizer.cs" />
     <Compile Include="Tokens\TokenSemantics.cs" />
+    <Compile Include="Tokens\Model\TypeOpeningToken.cs" />
+    <Compile Include="Tokens\Model\VariableToken.cs" />
     <Compile Include="Tools\PeekableStringReaderAdapter.cs" />
     <Compile Include="Tools\StringHelper.cs" />
     <Compile Include="Tools\TokenizedConfigValidator.cs" />
