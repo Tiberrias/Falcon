@@ -64,9 +64,10 @@
     <Compile Include="Tools\PeekableStringReaderAdapter.cs" />
     <Compile Include="Tools\StringHelper.cs" />
     <Compile Include="Tools\TokenizedConfigValidator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Wrapper\FileWrapper.cs" />
+    <Compile Include="Wrapper\IFileWrapper.cs" />
+    <Compile Include="Wrapper\IProcessWrapper.cs" />
+    <Compile Include="Wrapper\ProcessWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -74,7 +75,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
