@@ -5,6 +5,7 @@ namespace ArmaConfigParser.Tokens
 {
     public interface ITokenizer
     {
+
         IEnumerable<Token> Tokenize();
     }
 }

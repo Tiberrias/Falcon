@@ -101,7 +101,7 @@ namespace ArmaConfigParserTest.ConfigReader
             {
                 WindowStyle = ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe",
-                Arguments = @"/C C:\CoolPath\cfgConvert.exe -bin -dst C:\CoolPath\config.bin C:\CoolPath\debinarized.cpp"
+                Arguments = @"/C ""C:\CoolPath\cfgConvert.exe"" -txt -dst ""C:\CoolPath\debinarized.cpp"" ""C:\CoolPath\config.bin"""
             };
             _configDebinarizer.Initialize(@"C:\CoolPath\cfgConvert.exe");
             

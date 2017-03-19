@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using ArmaConfigParser.Wrapper;
 
 namespace ArmaConfigParser.ConfigReader
@@ -41,7 +40,7 @@ namespace ArmaConfigParser.ConfigReader
             {
                 WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe",
-                Arguments = $@"/C {_cfgConverterFilePath} -bin -dst {sourceFilePath} {destinationFilePath}"
+                Arguments = $@"/C ""{_cfgConverterFilePath}"" -txt -dst ""{destinationFilePath}"" ""{sourceFilePath}"""
             };
             _process.StartInfo = startInfo;
             _process.Start();

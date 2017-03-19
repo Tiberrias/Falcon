@@ -3,7 +3,7 @@ using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Tools
 {
-    public class TokenizedConfigValidator
+    public class TokenizedConfigValidator : ITokenizedConfigValidator
     {
         List<Token> _tokenizedConfig;
 

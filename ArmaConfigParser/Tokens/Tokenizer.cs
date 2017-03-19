@@ -11,36 +11,25 @@ namespace ArmaConfigParser.Tokens
     public class Tokenizer : ITokenizer
     {
         private readonly PeekableStringReaderAdapter _reader;
-        private readonly string _text;
         private List<Token> _resultTokens;
 
         public Tokenizer(string text)
         {
-            _text = text;
             StringReader underlyingReader = new StringReader(text);
             _reader = new PeekableStringReaderAdapter(underlyingReader);
         }
 
         public Tokenizer(StringReader stringReader)
         {
-            _text = null;
             if (stringReader != null)
             {
                 StringReader underlyingReader = stringReader;
                 _reader = new PeekableStringReaderAdapter(underlyingReader);
             }
         }
-
-        public bool TextIsValidForTokenize()
-        {
-            return StringHelper.HasBalancedCurlyBrackets(_text);
-        }
-
+        
         public IEnumerable<Token> Tokenize()
         {
-            if (!TextIsValidForTokenize())
-                throw new ArgumentException("Invalid config syntax");
-
             _resultTokens = new List<Token>();
 
             while (_reader.Peek() != -1)
