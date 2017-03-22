@@ -79,10 +79,22 @@ namespace ArmaConfigParserTest.ConfigReader
         }
 
         [Test]
+        public void DebinarizeConfigFile_ProcessTookTooLong_ThrowsTimeoutException()
+        {
+            //Arrange
+            _fileWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(true);
+            _processWrapper.Setup(x => x.WaitForExit(It.IsAny<int>())).Returns(false);
+
+            //Act/Assert
+            Assert.Throws<TimeoutException>(() => _configDebinarizer.DebinarizeConfigFile(@"C:\CoolPath\config.bin", @"C:\CoolPath\debinarized.cpp"));
+        }
+
+        [Test]
         public void DebinarizeConfigFile_ValidPaths_StartsProcess()
         {
             //Arrange
             _fileWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(true);
+            _processWrapper.Setup(x => x.WaitForExit(It.IsAny<int>())).Returns(true);
 
             //Act
             _configDebinarizer.DebinarizeConfigFile(@"C:\CoolPath\config.bin", @"C:\CoolPath\debinarized.cpp");
@@ -97,11 +109,12 @@ namespace ArmaConfigParserTest.ConfigReader
             //Arrange
             _fileWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(true);
             _processWrapper.SetupProperty(x => x.StartInfo);
+            _processWrapper.Setup(x => x.WaitForExit(It.IsAny<int>())).Returns(true);
             var expectedProcessStartInfo = new ProcessStartInfo()
             {
-                WindowStyle = ProcessWindowStyle.Hidden,
-                FileName = "cmd.exe",
-                Arguments = @"/C ""C:\CoolPath\cfgConvert.exe"" -txt -dst ""C:\CoolPath\debinarized.cpp"" ""C:\CoolPath\config.bin"""
+                WindowStyle = ProcessWindowStyle.Normal,
+                FileName = @"C:\CoolPath\cfgConvert.exe",
+                Arguments = @" -txt -dst ""C:\CoolPath\debinarized.cpp"" ""C:\CoolPath\config.bin"""
             };
             _configDebinarizer.Initialize(@"C:\CoolPath\cfgConvert.exe");
             

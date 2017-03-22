@@ -7,5 +7,7 @@ namespace ArmaConfigParser.Wrapper
         ProcessStartInfo StartInfo { get; set; }
 
         bool Start();
+
+        bool WaitForExit(int millisecondsTimeout);
     }
 }

@@ -38,12 +38,18 @@ namespace ArmaConfigParser.ConfigReader
             
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
             {
-                WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
-                FileName = "cmd.exe",
-                Arguments = $@"/C ""{_cfgConverterFilePath}"" -txt -dst ""{destinationFilePath}"" ""{sourceFilePath}"""
+                WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal,
+                FileName = $"{_cfgConverterFilePath}",
+                Arguments = $@" -txt -dst ""{destinationFilePath}"" ""{sourceFilePath}"""
             };
             _process.StartInfo = startInfo;
             _process.Start();
+
+            var successfullyExecuted = _process.WaitForExit(5000);
+            if (!successfullyExecuted)
+            {
+                throw new TimeoutException("Attempted config file debinarization took too long to complete. Timeout: ");
+            }
         }
     }
 }

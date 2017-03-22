@@ -98,5 +98,15 @@ namespace ArmaConfigParserTest.Properties {
                 return ResourceManager.GetString("ParsingExampleLargeCase", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] test_vars {
+            get {
+                object obj = ResourceManager.GetObject("test_vars", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

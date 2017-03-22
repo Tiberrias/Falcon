@@ -23,5 +23,10 @@ namespace ArmaConfigParser.Wrapper
         {
             return _process.Start();
         }
+
+        public bool WaitForExit(int millisecondsTimeout)
+        {
+            return _process.WaitForExit(millisecondsTimeout);
+        }
     }
 }
