@@ -1,3 +1,4 @@
+using ArmaConfigParser.ConfigReader.Interfaces;
 using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Wrapper.Interfaces;
 

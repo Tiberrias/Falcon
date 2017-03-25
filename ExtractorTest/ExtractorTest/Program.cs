@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ArmaConfigParser.ConfigReader;
+using ArmaConfigParser.ConfigReader.Interfaces;
 using ArmaConfigParser.Modules;
 using ArmaConfigParser.Tokens;
 using ArmaConfigParser.Tokens.Model;
-using ArmaConfigParser.Tools;
+using ArmaConfigParser.Tools.Interfaces;
 using Ninject;
 
 namespace ExtractorTest

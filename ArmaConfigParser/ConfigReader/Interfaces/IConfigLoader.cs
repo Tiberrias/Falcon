@@ -1,4 +1,4 @@
-﻿namespace ArmaConfigParser.ConfigReader
+﻿namespace ArmaConfigParser.ConfigReader.Interfaces
 {
     public interface IConfigLoader
     {

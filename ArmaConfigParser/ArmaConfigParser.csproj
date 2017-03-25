@@ -47,8 +47,8 @@
   <ItemGroup>
     <Compile Include="ConfigReader\ConfigDebinarizer.cs" />
     <Compile Include="ConfigReader\ConfigLoader.cs" />
-    <Compile Include="ConfigReader\IConfigDebinarizer.cs" />
-    <Compile Include="ConfigReader\IConfigLoader.cs" />
+    <Compile Include="ConfigReader\Interfaces\IConfigDebinarizer.cs" />
+    <Compile Include="ConfigReader\Interfaces\IConfigLoader.cs" />
     <Compile Include="Configuration\IConfigurationService.cs" />
     <Compile Include="Modules\ArmaConfigParserNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Tokens\TokenSemantics.cs" />
     <Compile Include="Tokens\Model\TypeOpeningToken.cs" />
     <Compile Include="Tokens\Model\VariableToken.cs" />
-    <Compile Include="Tools\ITokenizedConfigValidator.cs" />
+    <Compile Include="Tools\Interfaces\ITokenizedConfigValidator.cs" />
     <Compile Include="Tools\PeekableStringReaderAdapter.cs" />
     <Compile Include="Tools\StringHelper.cs" />
     <Compile Include="Tools\TokenizedConfigValidator.cs" />

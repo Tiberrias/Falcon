@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ArmaConfigParser.Tokens.Model;
+using ArmaConfigParser.Tools.Interfaces;
 
 namespace ArmaConfigParser.Tools
 {
@@ -31,7 +32,5 @@ namespace ArmaConfigParser.Tools
             }
             return treeDepth == 0;
         }
-
-
-    }
+     }
 }

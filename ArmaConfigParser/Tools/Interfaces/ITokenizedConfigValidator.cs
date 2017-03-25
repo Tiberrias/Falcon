@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ArmaConfigParser.Tokens.Model;
 
-namespace ArmaConfigParser.Tools
+namespace ArmaConfigParser.Tools.Interfaces
 {
     public interface ITokenizedConfigValidator
     {
