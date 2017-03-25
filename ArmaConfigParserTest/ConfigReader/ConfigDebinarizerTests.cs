@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using ArmaConfigParser.ConfigReader;
+using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Wrapper;
+using ArmaConfigParser.Wrapper.Interfaces;
 using Moq;
 using NUnit.Framework;
 
@@ -13,13 +15,15 @@ namespace ArmaConfigParserTest.ConfigReader
         private ConfigDebinarizer _configDebinarizer;
         private Mock<IProcessWrapper> _processWrapper;
         private Mock<IFileWrapper> _fileWrapper;
+        private Mock<IConfigurationService> _configurationService;
 
         [SetUp]
         public void SetUp()
         {
             _processWrapper = new Mock<IProcessWrapper>();
             _fileWrapper = new Mock<IFileWrapper>();
-            _configDebinarizer = new ConfigDebinarizer(_processWrapper.Object, _fileWrapper.Object);
+            _configurationService = new Mock<IConfigurationService>();
+            _configDebinarizer = new ConfigDebinarizer(_processWrapper.Object, _fileWrapper.Object, _configurationService.Object);
         }
 
         [Test]

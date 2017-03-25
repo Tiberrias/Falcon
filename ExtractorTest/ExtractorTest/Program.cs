@@ -16,12 +16,10 @@ namespace ExtractorTest
         static void Main(string[] args)
         {
             StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule());
-
-            string testPath = @"C:\Users\Tiberrias\Documents\A3\Tiberrias.vars.Arma3Profile.cpp";
+            
             string sourcePath = @"C:\Users\Tiberrias\Documents\A3\ConfigParsing\Tiberrias.vars.Arma3Profile";
             string destPath = @"C:\Users\Tiberrias\Documents\A3\ConfigParsing\Tiberrias.vars.Arma3Profile.cpp";
             string toolsPath = @"C:\Gry\Steam\steamapps\common\Arma 3 Tools\CfgConvert\CfgConvert.exe";
-            //string testPath = @"C:\Users\Tiberrias\Documents\A3\scrap.cpp";
 
             IConfigDebinarizer debinarizer = kernel.Get<IConfigDebinarizer>();
             debinarizer.Initialize(toolsPath);

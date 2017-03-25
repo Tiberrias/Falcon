@@ -1,8 +1,10 @@
 ﻿using System.Configuration;
 using System.IO;
 using ArmaConfigParser.ConfigReader;
+using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Wrapper;
 using ArmaConfigParserTest.Properties;
+using Moq;
 using NUnit.Framework;
 
 namespace ArmaConfigParserTest.IntegrationTests
@@ -13,6 +15,7 @@ namespace ArmaConfigParserTest.IntegrationTests
         private ProcessWrapper _processWrapper;
         private FileWrapper _fileWrapper;
         private ConfigDebinarizer _configDebinarizer;
+        private Mock<IConfigurationService> _configurationService;
 
         private string _configFilePath;
         private string _debinarizedFilePath;
@@ -22,14 +25,17 @@ namespace ArmaConfigParserTest.IntegrationTests
         {
             _fileWrapper = new FileWrapper();
             _processWrapper = new ProcessWrapper();
-            _configDebinarizer = new ConfigDebinarizer(_processWrapper, _fileWrapper);
-
+            _configurationService = new Mock<IConfigurationService>();
+            _configDebinarizer = new ConfigDebinarizer(_processWrapper, _fileWrapper, _configurationService.Object);
+            _configurationService.Setup(x => x.ConfigFileDebinarizationTimeout).Returns(5000);
+            
             _configDebinarizer.Initialize(ConfigurationManager.AppSettings["ArmaToolsCfgConvertPath"]);
 
             _configFilePath = Path.GetTempFileName();
             _debinarizedFilePath = Path.GetTempFileName();
         }
 
+        [Ignore("Integration tests offline")]
         [Test]
         public void ArmaConfigDebinarizer_ValidFile_DebinarizesFileAndSavesCorrectly()
         {

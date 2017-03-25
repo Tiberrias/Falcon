@@ -1,5 +1,6 @@
 ﻿using System;
-using ArmaConfigParser.Wrapper;
+using ArmaConfigParser.Configuration;
+using ArmaConfigParser.Wrapper.Interfaces;
 
 namespace ArmaConfigParser.ConfigReader
 {
@@ -8,11 +9,13 @@ namespace ArmaConfigParser.ConfigReader
         private string _cfgConverterFilePath;
         private readonly IProcessWrapper _process;
         private readonly IFileWrapper _file;
+        private readonly IConfigurationService _configurationService;
 
-        public ConfigDebinarizer(IProcessWrapper process, IFileWrapper file)
+        public ConfigDebinarizer(IProcessWrapper process, IFileWrapper file, IConfigurationService configurationService)
         {
             _process = process;
             _file = file;
+            _configurationService = configurationService;
         }
 
         public void Initialize(string cfgConverterFilePath)
@@ -45,7 +48,7 @@ namespace ArmaConfigParser.ConfigReader
             _process.StartInfo = startInfo;
             _process.Start();
 
-            var successfullyExecuted = _process.WaitForExit(5000);
+            var successfullyExecuted = _process.WaitForExit(_configurationService.ConfigFileDebinarizationTimeout);
             if (!successfullyExecuted)
             {
                 throw new TimeoutException("Attempted config file debinarization took too long to complete. Timeout: ");

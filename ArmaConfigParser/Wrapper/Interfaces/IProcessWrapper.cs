@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace ArmaConfigParser.Wrapper
+namespace ArmaConfigParser.Wrapper.Interfaces
 {
     public interface IProcessWrapper
     {
