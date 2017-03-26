@@ -45,6 +45,7 @@
     <Compile Include="Model\ManEquipment.cs" />
     <Compile Include="Model\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ArsenalEquipmentExtractionService.cs" />
     <Compile Include="Services\Interfaces\IArsenalEquipmentExtractionService.cs" />
   </ItemGroup>
   <ItemGroup>

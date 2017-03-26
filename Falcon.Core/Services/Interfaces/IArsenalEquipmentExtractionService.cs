@@ -5,6 +5,6 @@ namespace Falcon.Core.Services.Interfaces
 {
     public interface IArsenalEquipmentExtractionService
     {
-        List<Token> ExtractVirtualArsenalTokens(string filename);
+        List<Token> ExtractEntireVirtualArsenalTokens(List<Token> varsConfigTokens);
     }
 }
