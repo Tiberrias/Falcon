@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractorTest", "ExtractorT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmaConfigParser", "..\ArmaConfigParser\ArmaConfigParser.csproj", "{F6EB947C-7DC1-4D6B-B044-498638DB56FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmaConfigParserTest", "..\ArmaConfigParserTest\ArmaConfigParserTest.csproj", "{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmaConfigParserTests", "..\ArmaConfigParserTest\ArmaConfigParserTests.csproj", "{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Core", "..\Falcon.Core\Falcon.Core.csproj", "{B8093A20-546C-4E6B-B5A9-EDB96946066B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
