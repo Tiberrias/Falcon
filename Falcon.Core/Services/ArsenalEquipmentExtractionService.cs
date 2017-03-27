@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ArmaConfigParser.Tokens.Model;
-using ArmaConfigParser.Tools;
 using ArmaConfigParser.Tools.Interfaces;
 using Falcon.Core.Services.Interfaces;
 
 namespace Falcon.Core.Services
 {
-    class ArsenalEquipmentExtractionService : IArsenalEquipmentExtractionService
+    public class ArsenalEquipmentExtractionService : IArsenalEquipmentExtractionService
     {
-        private ITokenizedConfigValidator _tokenizedConfigValidator;
+        private readonly ITokenizedConfigValidator _tokenizedConfigValidator;
 
         public ArsenalEquipmentExtractionService(ITokenizedConfigValidator tokenizedConfigValidator)
         {
@@ -32,13 +32,11 @@ namespace Falcon.Core.Services
                 {
                     currentTokenTreeDepth--;
                 }
-
+                
                 if (!foundVirtualArsenalPartOfConfig &&
                     isTokenAfterClassOpeningToken &&
-                    currentTokenTreeDepth == 1 &&
-                    (token is VariableToken) &&
-                    (token as VariableToken).VariableName == "name" &&
-                    (token as VariableToken).Value as string == "bis_fnc_saveinventory_data")
+                    currentTokenTreeDepth == 2 &&
+                    IsInventoryDataBeginningVariableToken(token))
                 {
                     foundVirtualArsenalPartOfConfig = true;
                     resulTokens.Add(new ClassOpeningToken("VA"));
@@ -48,21 +46,28 @@ namespace Falcon.Core.Services
                 {
                     resulTokens.Add(token);
 
-                    if (currentTokenTreeDepth < 0)
+                    if (currentTokenTreeDepth < 2)
                     {
-                        
+                        break;
                     }
                 }
 
-                isTokenAfterClassOpeningToken = (token is ClassOpeningToken);
+                isTokenAfterClassOpeningToken = token is ClassOpeningToken;
             }
 
             if (!_tokenizedConfigValidator.Validate(resulTokens))
             {
-               
+               throw new Exception("Failed to extract equipment data. Invalid token list.");
             }
 
             return resulTokens;
+        }
+
+        private static bool IsInventoryDataBeginningVariableToken(Token token)
+        {
+            return token is VariableToken &&
+                   (token as VariableToken).VariableName == "name" &&
+                   (token as VariableToken).Value as string == "bis_fnc_saveinventory_data";
         }
     }
 }
