@@ -2,6 +2,7 @@
 using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools.Interfaces;
 using Falcon.Core.Services;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 
@@ -32,7 +33,7 @@ namespace FalconTests.Falcon.Core.Services
             var resultTokens = _arsenalEquipmentExtractionService.ExtractEntireVirtualArsenalTokens(inputTokens);
 
             //Assert
-            CollectionAssert.AreEqual(expectedTokens, resultTokens);
+            resultTokens.ShouldBeEquivalentTo(expectedTokens);
         }
 
         private List<Token> getExampleGoodInputTokens()

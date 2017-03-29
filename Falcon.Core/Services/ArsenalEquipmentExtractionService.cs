@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools.Interfaces;
 using Falcon.Core.Services.Interfaces;
 
 namespace Falcon.Core.Services
 {
+    //TODO: redesign system to have this service work on more useful constructs than tokens
+
     public class ArsenalEquipmentExtractionService : IArsenalEquipmentExtractionService
     {
         private readonly ITokenizedConfigValidator _tokenizedConfigValidator;
@@ -61,6 +64,11 @@ namespace Falcon.Core.Services
             }
 
             return resulTokens;
+        }
+
+        public List<List<Token>> SplitVirtualArsenalTokensIntoLoadoutsTokens(List<Token> virtualArsenalTokens)
+        {
+            throw new NotImplementedException();
         }
 
         private static bool IsInventoryDataBeginningVariableToken(Token token)
