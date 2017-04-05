@@ -37,7 +37,9 @@ namespace ArmaConfigParserTest.Converters
             var result = _sut.Convert(inputTokens);
 
             //Assert
-            result.ShouldBeEquivalentTo(expectedConfigObjects);
+            result.ShouldAllBeEquivalentTo(expectedConfigObjects,
+                options =>
+                    options.IncludingNestedObjects().IncludingFields().IncludingProperties().RespectingRuntimeTypes());
         }
 
         [Test]
@@ -67,7 +69,9 @@ namespace ArmaConfigParserTest.Converters
             var result = _sut.Convert(inputTokens);
 
             //Assert
-            result.ShouldBeEquivalentTo(expectedConfigObjects);
+            result.ShouldAllBeEquivalentTo(expectedConfigObjects,
+                options =>
+                    options.IncludingNestedObjects().IncludingFields().IncludingProperties().RespectingRuntimeTypes());
         }
     }
 }
