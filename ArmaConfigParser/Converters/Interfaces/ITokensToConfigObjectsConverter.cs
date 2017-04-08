@@ -2,7 +2,7 @@
 using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.Tokens.Model;
 
-namespace ArmaConfigParser.Converters
+namespace ArmaConfigParser.Converters.Interfaces
 {
     public interface ITokensToConfigObjectsConverter
     {

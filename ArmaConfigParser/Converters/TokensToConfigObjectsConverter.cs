@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using ArmaConfigParser.ConfigModel;
+using ArmaConfigParser.Converters.Interfaces;
 using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Converters
@@ -50,7 +52,7 @@ namespace ArmaConfigParser.Converters
                         FetchObject(configSection.Skip(firstTokenToFetch).Take(numberOfTokensToFetch).ToList());
                     resultObjects.Add(fetchedObject);
                     isGettingTokensForInnerFetch = false;
-                    numberOfTokensToFetch = 0;
+                    numberOfTokensToFetch = 1;
                 }
                 else
                 {
@@ -73,8 +75,7 @@ namespace ArmaConfigParser.Converters
             ConfigObject resultObject = null;
             
             var sectionBeginningToken = configSection.First();
-            var sectionEndingToken = configSection.Last();
-            
+
             if (sectionBeginningToken is VariableToken)
             {
                 resultObject = new ConfigVariable
@@ -85,68 +86,73 @@ namespace ArmaConfigParser.Converters
                 return resultObject;
             }
 
-            var numberOfObjectDefiningTokensToSkip = 1;
-
             if (sectionBeginningToken is ClassOpeningToken)
             {
                 if ((sectionBeginningToken as ClassOpeningToken).ClassName == "data")
                 {
+                    var dataClassType = ConfigDataTypeHelper.GetType(
+                        configSection.OfType<StandaloneStringToken>().First());
+
+                    var dataObject = (FetchObject(configSection.Skip(6).Take(configSection.Count - 7).ToList()));
+                    dynamic dataValue = ExtractDataValue(dataClassType, dataObject);
+                    
                     resultObject = new DataClass()
                     {
-                        DataType = ConfigDataTypeHelper.GetType(
-                            configSection.First(token => token is StandaloneStringToken) as StandaloneStringToken)
+                        DataType = dataClassType,
+                        Value = dataValue
                     };
-                    numberOfObjectDefiningTokensToSkip = 6;
                 }
-                else if ((sectionBeginningToken as ClassOpeningToken).ClassName == "Item")
+                else if (Regex.Match((sectionBeginningToken as ClassOpeningToken).ClassName, @"^Item\d+$").Success)
                 {
-                    resultObject = new ItemClass();
+                    var fetchedObjects = FetchListOfObjects(configSection.Skip(1).Take(configSection.Count - 2).ToList());
+                    var fetchedReadOnlyProperty =
+                    (fetchedObjects.FirstOrDefault(configObject => (configObject as ConfigVariable)?.Name == "readOnly")
+                        as
+                        ConfigVariable)?.Value;
+                    resultObject = new ItemClass
+                    {
+                        Name =
+                        (fetchedObjects.FirstOrDefault(configObject => (configObject as ConfigVariable)?.Name == "name") as
+                            ConfigVariable)?.Value.ToString(),
+                        Data = fetchedObjects.OfType<DataClass>().First(),
+                        ReadOnly = fetchedReadOnlyProperty == null ? default(bool?) : (int)fetchedReadOnlyProperty == 1
+                    };
+                    
                 }
                 else
                 {
-                    resultObject = new GeneralClass();
-                }
-            }
-            
-
-            var currentTokenTreeDepth = 0;
-            var currentToken = -1;
-            var firstTokenToFetch = 0;
-            var numberOfTokensToFetch = 1;
-            var isGettingTokensForInnerFetch = false;
-
-            foreach (var token in configSection.Skip(numberOfObjectDefiningTokensToSkip).Take(configSection.Count - numberOfObjectDefiningTokensToSkip - 1))
-            {
-                currentToken++;
-                if (token is OpeningToken)
-                {
-                    currentTokenTreeDepth++;
-                }
-                else if (token is EnclosingToken)
-                {
-                    currentTokenTreeDepth--;
-                }
-
-                if (currentTokenTreeDepth > 0)
-                {
-                    if (!isGettingTokensForInnerFetch)
+                    resultObject = new GeneralClass()
                     {
-                        firstTokenToFetch = currentToken;
-                        isGettingTokensForInnerFetch = true;
-                    }
-                    numberOfTokensToFetch++;
-                    continue;
-                }
-                if (isGettingTokensForInnerFetch)
-                {
-                    var fetchedObject =
-                        FetchObject(configSection.Skip(firstTokenToFetch).Take(numberOfTokensToFetch).ToList());
-                    resultObject = fetchedObject;
-                    isGettingTokensForInnerFetch = false;
-                    numberOfTokensToFetch = 0;
+                        ClassName = (sectionBeginningToken as ClassOpeningToken).ClassName,
+                        Content = FetchListOfObjects(configSection.Skip(1).Take(configSection.Count-2).ToList())
+                    };
                 }
             }
+
             return resultObject;
+        }
+
+        private static dynamic ExtractDataValue(ConfigDataType dataType, ConfigObject data)
+        {
+            dynamic dataValue;
+            switch (dataType)
+            {
+                case ConfigDataType.Bool:
+                    dataValue = System.Convert.ToBoolean((data as ConfigVariable).Value);
+                    break;
+                case ConfigDataType.Array:
+                    dataValue = (data as GeneralClass).Content;
+                    break;
+                case ConfigDataType.String:
+                    dataValue = (data as ConfigVariable).Value.ToString();
+                    break;
+                case ConfigDataType.Scalar:
+                    dataValue = (data as ConfigVariable).Value;
+                    break;
+                default:
+                    throw new Exception();
+            }
+            return dataValue;
         }
     }
 }

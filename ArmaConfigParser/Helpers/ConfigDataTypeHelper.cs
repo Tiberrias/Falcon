@@ -20,7 +20,7 @@ namespace ArmaConfigParser.Converters
                 case "BOOL":
                     return ConfigDataType.Bool;
                 case "SCALAR":
-                    return ConfigDataType.ScalarDouble;
+                    return ConfigDataType.Scalar;
                 case "ARRAY":
                     return ConfigDataType.Array;
                 case "STRING":

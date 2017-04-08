@@ -11,32 +11,47 @@ namespace ArmaConfigParserTest.Tokens
     [TestFixture]
     public class TokenizerTest
     {
+        private Tokenizer _sut;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _sut = new Tokenizer();
+        }
+
         [TestCase("", ExpectedResult = 0)]
         [TestCase("class item { };", ExpectedResult = 2)]
         [TestCase(@"type[]= {  ""STRING"" };", ExpectedResult = 3)]
         [TestCase(@"   ""STRING"" ", ExpectedResult = 1)]
         public int Tokenize_SmallDatas_ProperNumberOfTokenizedTokens(string text)
         {
-            Tokenizer tokenizer = new Tokenizer(text);
+            //Arrange
+            _sut.Initialize(text);
 
-            return (tokenizer.Tokenize() as List<Token>).Count;
+            //Act/Assert
+            return (_sut.Tokenize() as List<Token>).Count;
         }
 
         [Test]
         public void Tokenize_InvalidData_ThrowsException()
         {
-            Tokenizer tokenizer = new Tokenizer("}");
-            
-            Assert.Throws<ArgumentException>(() => tokenizer.Tokenize());
+            //Arrange
+            _sut.Initialize("}");
+
+            //Act/Assert
+            Assert.Throws<ArgumentException>(() => _sut.Tokenize());
         }
 
         [Test]
         public void Tokenize_ClassItemString_TokenizesAsSpecificTokens()
         {
-            Tokenizer tokenizer = new Tokenizer(@"class item { ""STRING""    };");
+            //Arrange
+            _sut.Initialize(@"class item { ""STRING""    };");
+
+            //Act
+            List<Token> resultTokens = _sut.Tokenize().ToList();
             
-            List<Token> resultTokens = tokenizer.Tokenize().ToList();
-            
+            //Assert
             Assert.AreEqual(3, resultTokens.Count);
             Assert.IsInstanceOf(typeof(ClassOpeningToken), resultTokens[0]);
             Assert.AreEqual("item", (resultTokens[0] as ClassOpeningToken).ClassName);
@@ -48,10 +63,13 @@ namespace ArmaConfigParserTest.Tokens
         [Test]
         public void Tokenize_ClassItem_TokenizesAsSpecificTokens()
         {
-            Tokenizer tokenizer = new Tokenizer("class item { };");
-            
-            List<Token> resultTokens = tokenizer.Tokenize().ToList();
-            
+            //Arrange
+            _sut.Initialize("class item { };");
+
+            //Act
+            List<Token> resultTokens = _sut.Tokenize().ToList();
+
+            //Assert
             Assert.AreEqual(2, resultTokens.Count);
             Assert.IsInstanceOf(typeof(ClassOpeningToken), resultTokens[0]);
             Assert.AreEqual("item", (resultTokens[0] as ClassOpeningToken).ClassName);
@@ -61,10 +79,13 @@ namespace ArmaConfigParserTest.Tokens
         [Test]
         public void Tokenize_SingleStringVariable_TokenizedProperly()
         {
-            Tokenizer tokenizer = new Tokenizer(@"value=""[""""Open"""",true] spawn BIS_fnc_arsenal;"";");
+            //Arrange
+            _sut.Initialize(@"value=""[""""Open"""",true] spawn BIS_fnc_arsenal;"";");
 
-            List<Token> resultTokens = tokenizer.Tokenize().ToList();
-            
+            //Act
+            List<Token> resultTokens = _sut.Tokenize().ToList();
+
+            //Assert
             Assert.AreEqual(1, resultTokens.Count);
             Assert.IsInstanceOf(typeof(VariableToken), resultTokens[0]);
             Assert.AreEqual("value", (resultTokens[0] as VariableToken).VariableName);
@@ -74,10 +95,13 @@ namespace ArmaConfigParserTest.Tokens
         [Test]
         public void Tokenize_LargeExample_TokenizedProperly()
         {
-            Tokenizer tokenizer = new Tokenizer(Properties.Resources.ParsingExampleLargeCase);
-            
-            List<Token> tokens = tokenizer.Tokenize().ToList();
-            
+            //Arrange
+            _sut.Initialize(Properties.Resources.ParsingExampleLargeCase);
+
+            //Act
+            List<Token> tokens = _sut.Tokenize().ToList();
+
+            //Assert
             Assert.AreEqual(432, tokens.Count);
             Assert.IsInstanceOf(typeof(ClassOpeningToken), tokens[0]);
             Assert.IsInstanceOf(typeof(VariableToken), tokens[1]);

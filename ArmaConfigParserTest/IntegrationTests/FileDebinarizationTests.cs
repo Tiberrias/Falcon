@@ -35,8 +35,9 @@ namespace ArmaConfigParserTest.IntegrationTests
             _debinarizedFilePath = Path.GetTempFileName();
         }
 
-        [Ignore("Integration tests offline")]
+        
         [Test]
+        [Ignore("Integration tests offline")]
         public void ArmaConfigDebinarizer_ValidFile_DebinarizesFileAndSavesCorrectly()
         {
             //Arrange

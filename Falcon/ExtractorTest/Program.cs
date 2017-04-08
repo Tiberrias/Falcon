@@ -27,7 +27,8 @@ namespace ExtractorTest
 
             string fucker = File.ReadAllText(destPath);
 
-            Tokenizer tokenizer = new Tokenizer(fucker);
+            Tokenizer tokenizer = new Tokenizer();
+            tokenizer.Initialize(fucker);
             List<Token> tokens = tokenizer.Tokenize().ToList();
             ITokenizedConfigValidator validator = kernel.Get<ITokenizedConfigValidator>();
             bool result = validator.Validate(tokens);

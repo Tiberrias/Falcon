@@ -10,24 +10,15 @@ namespace ArmaConfigParser.Tokens
 {
     public class Tokenizer : ITokenizer
     {
-        private readonly PeekableStringReaderAdapter _reader;
+        private PeekableStringReaderAdapter _reader;
         private List<Token> _resultTokens;
 
-        public Tokenizer(string text)
+        public void Initialize(string text)
         {
             StringReader underlyingReader = new StringReader(text);
             _reader = new PeekableStringReaderAdapter(underlyingReader);
         }
 
-        public Tokenizer(StringReader stringReader)
-        {
-            if (stringReader != null)
-            {
-                StringReader underlyingReader = stringReader;
-                _reader = new PeekableStringReaderAdapter(underlyingReader);
-            }
-        }
-        
         public IEnumerable<Token> Tokenize()
         {
             _resultTokens = new List<Token>();
@@ -164,5 +155,6 @@ namespace ArmaConfigParser.Tokens
                 _reader.Read();
             }
         }
+
     }
 }

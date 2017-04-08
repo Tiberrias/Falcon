@@ -53,11 +53,13 @@
     <Compile Include="ConfigModel\ItemClass.cs" />
     <Compile Include="ConfigReader\ConfigDebinarizer.cs" />
     <Compile Include="ConfigReader\ConfigLoader.cs" />
+    <Compile Include="ConfigReader\ConfigExtractionService.cs" />
     <Compile Include="ConfigReader\Interfaces\IConfigDebinarizer.cs" />
+    <Compile Include="ConfigReader\Interfaces\IConfigExtractionService.cs" />
     <Compile Include="ConfigReader\Interfaces\IConfigLoader.cs" />
     <Compile Include="Configuration\IConfigurationService.cs" />
-    <Compile Include="Converters\ConfigDataTypeHelper.cs" />
-    <Compile Include="Converters\ITokensToConfigObjectsConverter.cs" />
+    <Compile Include="Helpers\ConfigDataTypeHelper.cs" />
+    <Compile Include="Converters\Interfaces\ITokensToConfigObjectsConverter.cs" />
     <Compile Include="Converters\TokensToConfigObjectsConverter.cs" />
     <Compile Include="Modules\ArmaConfigParserNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
