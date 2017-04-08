@@ -2,7 +2,7 @@
 using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.Tokens.Model;
 
-namespace ArmaConfigParser.Converters
+namespace ArmaConfigParser.Helpers
 {
     public static class ConfigDataTypeHelper
     {
@@ -25,6 +25,9 @@ namespace ArmaConfigParser.Converters
                     return ConfigDataType.Array;
                 case "STRING":
                     return ConfigDataType.String;
+                case "NOTHING":
+                case "ANY":
+                    return ConfigDataType.Nothing;
                 default:
                     throw new ArgumentException(@"Unknown ConfigDataType", nameof(typeDefiningToken));
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.Converters.Interfaces;
+using ArmaConfigParser.Helpers;
 using ArmaConfigParser.Tokens.Model;
 
 namespace ArmaConfigParser.Converters
@@ -72,6 +73,11 @@ namespace ArmaConfigParser.Converters
 
         private ConfigObject FetchObject(List<Token> configSection)
         {
+            if (configSection.Count == 0)
+            {
+                return null;
+            }
+
             ConfigObject resultObject = null;
             
             var sectionBeginningToken = configSection.First();
@@ -141,13 +147,23 @@ namespace ArmaConfigParser.Converters
                     dataValue = System.Convert.ToBoolean((data as ConfigVariable).Value);
                     break;
                 case ConfigDataType.Array:
-                    dataValue = (data as GeneralClass).Content;
+                    if (data == null)
+                    {
+                        dataValue = null;
+                    }
+                    else
+                    {
+                        dataValue = (data as GeneralClass).Content;
+                    }
                     break;
                 case ConfigDataType.String:
                     dataValue = (data as ConfigVariable).Value.ToString();
                     break;
                 case ConfigDataType.Scalar:
                     dataValue = (data as ConfigVariable).Value;
+                    break;
+                case ConfigDataType.Nothing:
+                    dataValue = null;
                     break;
                 default:
                     throw new Exception();
