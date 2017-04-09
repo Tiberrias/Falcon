@@ -25,6 +25,7 @@ namespace ArmaConfigParserTest.IntegrationTests
             _sut = kernel.Get<ConfigExtractionService>();
         }
 
+        [Ignore("Integration tests offline")]
         [Test]
         public void Extract_BinarizedFileOnDisc_ReturnsConfigObjectData()
         {
