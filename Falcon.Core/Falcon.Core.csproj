@@ -47,8 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\DataClassToLoadoutListConverter.cs" />
+    <Compile Include="Converters\Interfaces\IDataClassToLoadoutListConverter.cs" />
     <Compile Include="Model\Container.cs" />
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Loadout.cs" />
     <Compile Include="Model\ManEquipment.cs" />
     <Compile Include="Model\Weapon.cs" />
     <Compile Include="Modules\FalconCoreNinjectModule.cs" />

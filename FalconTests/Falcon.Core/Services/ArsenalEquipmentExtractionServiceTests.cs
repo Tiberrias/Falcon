@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools.Interfaces;
 using Falcon.Core.Services;
@@ -11,100 +13,87 @@ namespace FalconTests.Falcon.Core.Services
     [TestFixture]
     public class ArsenalEquipmentExtractionServiceTests
     {
-        private ArsenalEquipmentExtractionService _arsenalEquipmentExtractionService;
-        private Mock<ITokenizedConfigValidator> _tokenizedConfigValidator;
+        private ArsenalEquipmentExtractionService _sut;
 
         [SetUp]
         public void SetUp()
         {
-            _tokenizedConfigValidator = new Mock<ITokenizedConfigValidator>();
-            _arsenalEquipmentExtractionService = new ArsenalEquipmentExtractionService(_tokenizedConfigValidator.Object);
+            _sut = new ArsenalEquipmentExtractionService();
         }
 
         [Test]
-        public void ExtractEntireVirtualArsenalTokens_ExampleData_ExtractsProperTokens()
+        public void GetInventoryData_EmptyProfileVars_ThrowsException()
+        {
+            //Act/Assert
+            Assert.Throws<ArgumentException>(() => _sut.GetInventoryData(null));
+        }
+
+        [Test]
+        public void GetInventoryData_NoProfileVariablesInInput_ThrowsException()
         {
             //Arrange
-            _tokenizedConfigValidator.Setup(x => x.Validate(It.IsAny<List<Token>>())).Returns(true);
-            var inputTokens = getExampleGoodInputTokens();
-            var expectedTokens = getExpectedTokens();
+            var config = new List<ConfigObject>
+            {
+                new ConfigVariable() {Name = "Variable", Value = "Value"},
+                new ConfigVariable() {Name = "Variable2", Value = 1}
+            };
+
+            //Act/Assert
+            Assert.Throws<ArgumentException>(() => _sut.GetInventoryData(config));
+        }
+
+        [Test]
+        public void GetInventoryData_NoInventoryDataInInput_ThrowsException()
+        {
+            //Arrange
+            var config = new List<ConfigObject>
+            {
+                new ConfigVariable() {Name = "version", Value = 2},
+                new GeneralClass()
+                {
+                    ClassName = "ProfileVariables",
+                    Content = new List<ConfigObject>
+                    {
+                     new ItemClass() {Name = "bis_cool_variable"},
+                     new ItemClass() {Name = "bis_less_cool_variable"}
+                    }
+                }
+            };
+
+            //Act/Assert
+            Assert.Throws<ArgumentException>(() => _sut.GetInventoryData(config));
+        }
+
+        [Test]
+        public void GetInventoryData_InventoryDataInInput_ReturnsProperDataClass()
+        {
+            //Arrange
+            var expectedData = new DataClass() {DataType = ConfigDataType.Array, Value = new List<ConfigObject>()};
+
+            var config = new List<ConfigObject>
+            {
+                new ConfigVariable() {Name = "version", Value = 2},
+                new GeneralClass()
+                {
+                    ClassName = "ProfileVariables",
+                    Content = new List<ConfigObject>
+                    {
+                     new ItemClass() {Name = "bis_cool_variable"},
+                     new ItemClass()
+                     {
+                         Name = "bis_fnc_saveinventory_data",
+                         Data = expectedData
+                     }
+                    }
+                }
+            };
 
             //Act
-            var resultTokens = _arsenalEquipmentExtractionService.ExtractEntireVirtualArsenalTokens(inputTokens);
+            var result = _sut.GetInventoryData(config);
 
             //Assert
-            resultTokens.ShouldBeEquivalentTo(expectedTokens);
+            result.Should().Be(expectedData);
         }
 
-        private List<Token> getExampleGoodInputTokens()
-        {
-            return new List<Token>
-            {
-                new VariableToken("version", 2),
-                new ClassOpeningToken("ProfileVariables"),
-                new VariableToken("items", 581),
-                new VariableToken("slots", 63),
-                new ClassOpeningToken("Item0"),
-                new VariableToken("something", "something"),
-                new ClosingToken(),
-                new ClassOpeningToken("Item548"),
-                new VariableToken("name", "bis_fnc_saveinventory_data"),
-                new ClassOpeningToken("data"),
-                new ClassOpeningToken("type"),
-                new TypeOpeningToken(),
-                new StandaloneStringToken("ARRAY"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClassOpeningToken("value"),
-                new VariableToken("items", 482),
-                new ClassOpeningToken("Item0"),
-                new ClassOpeningToken("data"),
-                new ClassOpeningToken("type"),
-                new TypeOpeningToken(),
-                new StandaloneStringToken("STRING"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new VariableToken("value", "pusty"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClassOpeningToken("Item549"),
-                new VariableToken("something", "something"),
-                new ClosingToken(),
-                new ClosingToken()
-            };
-        }
-
-        private List<Token> getExpectedTokens()
-        {
-            return new List<Token>
-            {
-                new ClassOpeningToken("VA"),
-                new VariableToken("name", "bis_fnc_saveinventory_data"),
-                new ClassOpeningToken("data"),
-                new ClassOpeningToken("type"),
-                new TypeOpeningToken(),
-                new StandaloneStringToken("ARRAY"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClassOpeningToken("value"),
-                new VariableToken("items", 482),
-                new ClassOpeningToken("Item0"),
-                new ClassOpeningToken("data"),
-                new ClassOpeningToken("type"),
-                new TypeOpeningToken(),
-                new StandaloneStringToken("STRING"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new VariableToken("value", "pusty"),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-                new ClosingToken(),
-            };
-        }
     }
 }

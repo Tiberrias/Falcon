@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using ArmaConfigParser.Tokens.Model;
+﻿using System;
+using System.Collections.Generic;
+using ArmaConfigParser.ConfigModel;
 
 namespace Falcon.Core.Services.Interfaces
 {
     public interface IArsenalEquipmentExtractionService
     {
-        List<Token> ExtractEntireVirtualArsenalTokens(List<Token> varsConfigTokens);
-
-        List<List<Token>> SplitVirtualArsenalTokensIntoLoadoutsTokens(List<Token> virtualArsenalTokens);
+        DataClass GetInventoryData(List<ConfigObject> profileVars);
     }
 }

@@ -1,81 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ArmaConfigParser.Tokens.Model;
-using ArmaConfigParser.Tools.Interfaces;
+using ArmaConfigParser.ConfigModel;
 using Falcon.Core.Services.Interfaces;
 
 namespace Falcon.Core.Services
 {
-    //TODO: redesign system to have this service work on more useful constructs than tokens
-
     public class ArsenalEquipmentExtractionService : IArsenalEquipmentExtractionService
     {
-        private readonly ITokenizedConfigValidator _tokenizedConfigValidator;
+        private const string InventoryDataString = "bis_fnc_saveinventory_data";
+        private const string ProfileVariablesString = "ProfileVariables";
 
-        public ArsenalEquipmentExtractionService(ITokenizedConfigValidator tokenizedConfigValidator)
+        public DataClass GetInventoryData(List<ConfigObject> profileVars)
         {
-            _tokenizedConfigValidator = tokenizedConfigValidator;
-        }
-
-        public List<Token> ExtractEntireVirtualArsenalTokens(List<Token> varsConfigTokens)
-        {
-            List<Token> resulTokens = new List<Token>();
-            var foundVirtualArsenalPartOfConfig = false;
-            var isTokenAfterClassOpeningToken = false;
-            var currentTokenTreeDepth = 0;
-
-            foreach (var token in varsConfigTokens)
+            var innerData =
+                profileVars?.OfType<GeneralClass>().FirstOrDefault(item => item.ClassName == ProfileVariablesString);
+            var inventoryClass =
+                innerData?.Content.OfType<ItemClass>().FirstOrDefault(item => item.Name == InventoryDataString);
+            if (inventoryClass != null)
             {
-                if (token is OpeningToken)
-                {
-                    currentTokenTreeDepth++;
-                }
-                else if (token is EnclosingToken)
-                {
-                    currentTokenTreeDepth--;
-                }
-                
-                if (!foundVirtualArsenalPartOfConfig &&
-                    isTokenAfterClassOpeningToken &&
-                    currentTokenTreeDepth == 2 &&
-                    IsInventoryDataBeginningVariableToken(token))
-                {
-                    foundVirtualArsenalPartOfConfig = true;
-                    resulTokens.Add(new ClassOpeningToken("VA"));
-                }
-
-                if (foundVirtualArsenalPartOfConfig)
-                {
-                    resulTokens.Add(token);
-
-                    if (currentTokenTreeDepth < 2)
-                    {
-                        break;
-                    }
-                }
-
-                isTokenAfterClassOpeningToken = token is ClassOpeningToken;
+                return inventoryClass.Data;
             }
-
-            if (!_tokenizedConfigValidator.Validate(resulTokens))
-            {
-               throw new Exception("Failed to extract equipment data. Invalid token list.");
-            }
-
-            return resulTokens;
-        }
-
-        public List<List<Token>> SplitVirtualArsenalTokensIntoLoadoutsTokens(List<Token> virtualArsenalTokens)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static bool IsInventoryDataBeginningVariableToken(Token token)
-        {
-            return token is VariableToken &&
-                   (token as VariableToken).VariableName == "name" &&
-                   (token as VariableToken).Value as string == "bis_fnc_saveinventory_data";
+            throw new ArgumentException("No inventory data found in config variables.");
         }
     }
 }
