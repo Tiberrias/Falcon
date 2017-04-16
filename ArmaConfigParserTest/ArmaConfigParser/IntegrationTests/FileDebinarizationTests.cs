@@ -3,11 +3,11 @@ using System.IO;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Wrapper;
-using ArmaConfigParserTest.Properties;
+using Falcon.Tests.Properties;
 using Moq;
 using NUnit.Framework;
 
-namespace ArmaConfigParserTest.IntegrationTests
+namespace Falcon.Tests.ArmaConfigParser.IntegrationTests
 {
     [TestFixture(Category = "Integration")]
     public class FileDebinarizationTests

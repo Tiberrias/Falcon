@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using ArmaConfigParser.Tokens;
 using ArmaConfigParser.Tokens.Model;
+using NUnit.Framework;
 
-
-namespace ArmaConfigParserTest.Tokens
+namespace Falcon.Tests.ArmaConfigParser.Tokens
 {
     [TestFixture]
     public class TokenizerTest

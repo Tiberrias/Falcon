@@ -5,7 +5,7 @@ using Falcon.Core.Model;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace FalconTests.Falcon.Core.Converters
+namespace Falcon.Tests.Falcon.Core.Converters
 {
     [TestFixture]
     public class DataClassToLoadoutListConverterTests

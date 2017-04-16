@@ -2,12 +2,11 @@
 using System.Diagnostics;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
-using ArmaConfigParser.Wrapper;
 using ArmaConfigParser.Wrapper.Interfaces;
 using Moq;
 using NUnit.Framework;
 
-namespace ArmaConfigParserTest.ConfigReader
+namespace Falcon.Tests.ArmaConfigParser.ConfigReader
 {
     [TestFixture]
     public class ConfigDebinarizerTests

@@ -1,8 +1,8 @@
 ﻿using System;
-using NUnit.Framework;
 using ArmaConfigParser.Tokens.Model;
+using NUnit.Framework;
 
-namespace ArmaConfigParserTest.Tokens
+namespace Falcon.Tests.ArmaConfigParser.Tokens
 {
     [TestFixture]
     public class TokenTest

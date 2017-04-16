@@ -5,7 +5,7 @@ using Falcon.Core.Services;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace FalconTests.Falcon.Core.Services
+namespace Falcon.Tests.Falcon.Core.Services
 {
     [TestFixture]
     public class ArsenalEquipmentExtractionServiceTests

@@ -3,12 +3,12 @@ using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Modules;
-using ArmaConfigParserTest.Configuration;
-using ArmaConfigParserTest.Properties;
+using Falcon.Tests.Configuration;
+using Falcon.Tests.Properties;
 using Ninject;
 using NUnit.Framework;
 
-namespace ArmaConfigParserTest.IntegrationTests
+namespace Falcon.Tests.ArmaConfigParser.IntegrationTests
 {
     [TestFixture(Category = "Integration")]
     public class ConfigExtractionTests

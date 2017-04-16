@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using ArmaConfigParser.Tokens;
+﻿using System.Collections.Generic;
 using ArmaConfigParser.Tokens.Model;
 using ArmaConfigParser.Tools;
+using NUnit.Framework;
 
-namespace ArmaConfigParserTest.Tools
+namespace Falcon.Tests.ArmaConfigParser.Tools
 {
     [TestFixture]
     public class TokenizedConfigValidatorTests

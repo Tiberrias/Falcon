@@ -1,20 +1,12 @@
-﻿using NUnit.Framework;
-using System.IO;
+﻿using System.IO;
 using ArmaConfigParser.Tools;
+using NUnit.Framework;
 
-namespace ArmaConfigParserTest.Tools
+namespace Falcon.Tests.ArmaConfigParser.Tools
 {
     [TestFixture]
     public class StringHelperTest
     {
-        
-        [SetUp]
-        public void TestInit()
-        {
-
-        }
-
-
         [TestCase("",ExpectedResult=true)]
         [TestCase("{}", ExpectedResult = true)]
         [TestCase("}{", ExpectedResult = false)]
@@ -30,7 +22,7 @@ namespace ArmaConfigParserTest.Tools
         [Test]
         public void HasBalancedCurlyBrackets_LargeExample_ValidOutcome()
         {
-            StringReader testReader = new StringReader(ArmaConfigParserTest.Properties.Resources.ParsingExampleLargeCase);
+            StringReader testReader = new StringReader(Properties.Resources.ParsingExampleLargeCase);
 
             bool result = StringHelper.HasBalancedCurlyBrackets(testReader);
 

@@ -5,11 +5,9 @@ VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmaConfigParser", "..\ArmaConfigParser\ArmaConfigParser.csproj", "{F6EB947C-7DC1-4D6B-B044-498638DB56FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmaConfigParserTests", "..\ArmaConfigParserTest\ArmaConfigParserTests.csproj", "{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Tests", "..\ArmaConfigParserTest\Falcon.Tests.csproj", "{FF3BDD50-A26C-4E80-9C8E-9527276D70CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Core", "..\Falcon.Core\Falcon.Core.csproj", "{B8093A20-546C-4E6B-B5A9-EDB96946066B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalconTests", "..\FalconTests\FalconTests.csproj", "{D624FA02-0CF6-440A-BC24-E5DF4DF091EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D624FA02-0CF6-440A-BC24-E5DF4DF091EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D624FA02-0CF6-440A-BC24-E5DF4DF091EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D624FA02-0CF6-440A-BC24-E5DF4DF091EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D624FA02-0CF6-440A-BC24-E5DF4DF091EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

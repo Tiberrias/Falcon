@@ -2,7 +2,7 @@
 using System.Configuration;
 using ArmaConfigParser.Configuration;
 
-namespace ArmaConfigParserTest.Configuration
+namespace Falcon.Tests.Configuration
 {
     public class ConfigurationServiceTestImplementation : IConfigurationService
     {

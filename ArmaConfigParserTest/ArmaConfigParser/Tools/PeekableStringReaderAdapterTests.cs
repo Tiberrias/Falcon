@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
-using System.IO;
+﻿using System.IO;
 using ArmaConfigParser.Tools;
+using NUnit.Framework;
 
-namespace ArmaConfigParserTest.Tools
+namespace Falcon.Tests.ArmaConfigParser.Tools
 {
     [TestFixture]
     class PeekableStringReaderAdapterTests

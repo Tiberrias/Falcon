@@ -5,7 +5,7 @@ using ArmaConfigParser.Tokens.Model;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace ArmaConfigParserTest.Converters
+namespace Falcon.Tests.ArmaConfigParser.Converters
 {
     [TestFixture]
     public class TokensToConfigObjectsConverterTests
