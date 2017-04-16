@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using ArmaConfigParser.ConfigModel;
-using ArmaConfigParser.Tokens.Model;
-using ArmaConfigParser.Tools.Interfaces;
 using Falcon.Core.Services;
 using FluentAssertions;
-using Moq;
 using NUnit.Framework;
 
 namespace FalconTests.Falcon.Core.Services

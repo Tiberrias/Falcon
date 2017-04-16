@@ -8,6 +8,8 @@ namespace Falcon.Core.Model
 
         public Item Goggles { get; set; }
 
+        public Item Binocular { get; set; }
+
         public List<Item> AssignedItems { get; set; }
 
         public Container Uniform { get; set; }

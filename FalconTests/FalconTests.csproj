@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Falcon.Core\Converters\DataClassToLoadoutListConverterTests.cs" />
     <Compile Include="Falcon.Core\Services\ArsenalEquipmentExtractionServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
