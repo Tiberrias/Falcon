@@ -20,7 +20,7 @@ namespace Falcon.Core.Converters
 
             var currentItemIsNameItem = true;
             string currentLoadoutName = null;
-            foreach (ItemClass item in inventoryData.Value as List<ConfigObject>)
+            foreach (var item in (inventoryData.Value as List<ConfigObject>).OfType<ItemClass>())
             {
                 if (currentItemIsNameItem)
                 {
@@ -90,7 +90,11 @@ namespace Falcon.Core.Converters
 
         private List<Item> GetItems(ItemClass itemsDataItem)
         {
-            return
+            if (itemsDataItem.Data.Value == null)
+            {
+                return new List<Item>();
+            }
+            return 
                 (itemsDataItem.Data.Value as List<ConfigObject>).OfType<ItemClass>()
                 .Where(item => !String.IsNullOrEmpty(item.Data.Value as string))
                 .Select(result => new Item {Classname = result.Data.Value as string})

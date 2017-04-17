@@ -27,12 +27,13 @@ namespace Falcon.Tests.Falcon.Core.Converters
                 DataType = ConfigDataType.Array,
                 Value = new List<ConfigObject>
                 {
+                    new ConfigVariable{Name = "items", Value = 2},
                     new ItemClass
                     {
                         Data = new DataClass()
                         {
                             DataType = ConfigDataType.String,
-                            Value = "EmptyLoadout"
+                            Value = "AlmostEmptyLoadout"
                         }
                     },
                     new ItemClass
@@ -42,6 +43,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             DataType = ConfigDataType.Array,
                             Value = new List<ConfigObject>
                             {
+                                new ConfigVariable(){Name = "items", Value = 11},
                                 new ItemClass
                                 {
                                     Data = new DataClass
@@ -49,6 +51,20 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 2},
+                                            new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "Something"}},
+                                            new ItemClass{ Data = new DataClass { DataType = ConfigDataType.Array, Value = null}}
+                                        }
+                                    }
+                                },
+                                new ItemClass
+                                {
+                                    Data = new DataClass
+                                    {
+                                        DataType = ConfigDataType.Array,
+                                        Value = new List<ConfigObject>
+                                        {
+                                            new ConfigVariable{Name = "items", Value = 2},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.Array, Value = null}}
                                         }
@@ -61,18 +77,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
-                                            new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
-                                            new ItemClass{ Data = new DataClass { DataType = ConfigDataType.Array, Value = null}}
-                                        }
-                                    }
-                                },
-                                new ItemClass
-                                {
-                                    Data = new DataClass
-                                    {
-                                        DataType = ConfigDataType.Array,
-                                        Value = new List<ConfigObject>
-                                        {
+                                            new ConfigVariable(){Name = "items", Value = 2},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.Array, Value = null}}
                                         }
@@ -109,12 +114,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
@@ -132,12 +139,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
@@ -155,12 +164,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
@@ -176,10 +187,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                     Data = new DataClass
                                     {
                                         DataType = ConfigDataType.Array,
-                                        Value = new List<ConfigObject>
-                                        {
-                                            
-                                        }
+                                        Value = new List<ConfigObject>()
                                     }
                                 },
                                 new ItemClass
@@ -189,6 +197,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}}
@@ -205,10 +214,11 @@ namespace Falcon.Tests.Falcon.Core.Converters
             {
                 new Loadout()
                 {
-                    Name = "EmptyLoadout",
+                    Name = "AlmostEmptyLoadout",
                     ManEquipment = new ManEquipment
                     {
-                        AssignedItems = new List<Item>()
+                        AssignedItems = new List<Item>(),
+                        Uniform = new Container{Classname = "Something", Items = new List<Item>()}
                     }
                 }
             };
@@ -229,6 +239,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                 DataType = ConfigDataType.Array,
                 Value = new List<ConfigObject>
                 {
+                    new ConfigVariable(){Name = "items", Value = 2},
                     new ItemClass
                     {
                         Data = new DataClass()
@@ -244,6 +255,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             DataType = ConfigDataType.Array,
                             Value = new List<ConfigObject>
                             {
+                                new ConfigVariable(){Name = "items", Value = 11},
                                 new ItemClass //Uniform
                                 {
                                     Data = new DataClass
@@ -251,12 +263,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 2},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "LOP_U_CDF_Fatigue_01"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 2},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "ACE_fieldDressing"}},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "ACE_EarPlugs"}},
                                                 }
@@ -271,12 +285,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 2},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "LOP_V_6B23_6Sh92_CDF"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 2},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "ACRE_PRC343_ID_2"}},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "rhs_10Rnd_762x54mmR_7N1"}},
                                                 }
@@ -291,12 +307,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable(){Name = "items", Value = 2},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "rhs_sidor"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable(){Name = "items", Value = 2},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "ACE_RangeCard"}},
                                                     new ItemClass {Data = new DataClass{ DataType = ConfigDataType.String, Value = "RH_8Rnd_762_tt33"}},
                                                 }
@@ -335,12 +353,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "rhs_weap_svdp_npz"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable{Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "rhsusf_acc_LEUPOLDMK4"}},
@@ -358,12 +378,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "RPG7_v2"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable{Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "PGO"}},
@@ -381,12 +403,14 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "RH_tt33"}},
                                             new ItemClass{ Data = new DataClass
                                             {
                                                 DataType = ConfigDataType.Array,
                                                 Value = new List<ConfigObject>
                                                 {
+                                                    new ConfigVariable{Name = "items", Value = 4},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
                                                     new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}},
@@ -404,6 +428,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 5},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "ItemMap"}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "ItemCompass"}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "ItemWatch"}},
@@ -419,6 +444,7 @@ namespace Falcon.Tests.Falcon.Core.Converters
                                         DataType = ConfigDataType.Array,
                                         Value = new List<ConfigObject>
                                         {
+                                            new ConfigVariable{Name = "items", Value = 3},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "WhiteHead_08"}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = "ACE_NoVoice"}},
                                             new ItemClass{ Data = new DataClass { DataType = ConfigDataType.String, Value = ""}}

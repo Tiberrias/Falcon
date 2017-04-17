@@ -1,10 +1,13 @@
 ﻿using System.IO;
-using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Modules;
+using Falcon.Core.Converters;
+using Falcon.Core.Modules;
+using Falcon.Core.Services;
 using Falcon.Tests.Configuration;
 using Falcon.Tests.Properties;
+using FluentAssertions;
 using Ninject;
 using NUnit.Framework;
 
@@ -13,32 +16,36 @@ namespace Falcon.Tests.Falcon.Core.Integration
     [TestFixture(Category = "Integration")]
     public class LoadoutExtractionTests
     {
-        private ConfigExtractionService _sut;
+        private ConfigExtractionService _configExtractionService;
+        private ArsenalEquipmentExtractionService _arsenalEquipmentExtractionService;
+        private DataClassToLoadoutListConverter _sut;
         private string _configFilePath;
 
         [SetUp]
         public void SetUp()
         {
-            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule());
+            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule(), new FalconCoreNinjectModule());
             kernel.Bind<IConfigurationService>().To<ConfigurationServiceTestImplementation>();
 
-            _sut = kernel.Get<ConfigExtractionService>();
+            _configExtractionService = kernel.Get<ConfigExtractionService>();
+            _arsenalEquipmentExtractionService = kernel.Get<ArsenalEquipmentExtractionService>();
+            _sut = kernel.Get<DataClassToLoadoutListConverter>();
         }
-
-        [Ignore("Integration tests offline")]
+        
         [Test]
-        public void Extract_BinarizedFileOnDisc_ReturnsConfigObjectData()
+        public void ExtractGetConvert_BinarizedFileOnDisc_ReturnsListOfConvertedLoadouts()
         {
             //Arrange
             _configFilePath = Path.GetTempFileName();
             File.WriteAllBytes(_configFilePath, Resources.test_vars);
 
             //Act
-            var result = _sut.Extract(_configFilePath);
+            var configObjects = _configExtractionService.Extract(_configFilePath);
+            var arsenalData = _arsenalEquipmentExtractionService.GetInventoryData(configObjects);
+            var result = _sut.Convert(arsenalData);
 
             //Assert
-            Assert.AreEqual(result.Count, 2);
-            Assert.AreEqual((result[1] as GeneralClass).Content.Count, 595);
+            result.Count.Should().Be(255);
         }
 
         [TearDown]
