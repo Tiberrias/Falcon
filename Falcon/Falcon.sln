@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Tests", "Falcon.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Core", "Falcon.Core\Falcon.Core.csproj", "{B8093A20-546C-4E6B-B5A9-EDB96946066B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.GUI", "Falcon.GUI\Falcon.GUI.csproj", "{13D52D7C-74EA-4971-8F2B-9EF89A32E50C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8093A20-546C-4E6B-B5A9-EDB96946066B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D52D7C-74EA-4971-8F2B-9EF89A32E50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D52D7C-74EA-4971-8F2B-9EF89A32E50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D52D7C-74EA-4971-8F2B-9EF89A32E50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D52D7C-74EA-4971-8F2B-9EF89A32E50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
