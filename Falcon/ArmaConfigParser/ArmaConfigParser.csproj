@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\ExtractorTest\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\ExtractorTest\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -86,6 +86,8 @@
     <Compile Include="Tools\StringHelper.cs" />
     <Compile Include="Tools\TokenizedConfigValidator.cs" />
     <Compile Include="Wrapper\FileWrapper.cs" />
+    <Compile Include="Wrapper\DirectoryWrapper.cs" />
+    <Compile Include="Wrapper\Interfaces\IDirectoryWrapper.cs" />
     <Compile Include="Wrapper\Interfaces\IFileWrapper.cs" />
     <Compile Include="Wrapper\Interfaces\IPathWrapper.cs" />
     <Compile Include="Wrapper\Interfaces\IProcessWrapper.cs" />

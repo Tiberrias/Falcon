@@ -15,5 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Hello WPF!"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CurrentLoadout.Name}"></TextBlock>
+        <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Content="Click" Command="{Binding DoStuffCommand}"></Button>
     </Grid>
 </UserControl>

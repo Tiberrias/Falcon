@@ -15,7 +15,9 @@ namespace Falcon.GUI.Configuration.Ninject
                 .BindToSelf()
                 .Configure(opt => opt.InTransientScope()));
 
-            Bind<IConfigurationService>().To<ConfigurationService>();
+            Bind<IConfigurationService>().To<ConfigurationService>().InSingletonScope();
+
+            Bind<Core.Configuration.IConfigurationService>().To<ConfigurationService>().InSingletonScope();
         }
     }
 }

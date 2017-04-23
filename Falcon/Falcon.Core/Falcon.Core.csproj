@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\IConfigurationService.cs" />
     <Compile Include="Converters\DataClassToLoadoutListConverter.cs" />
     <Compile Include="Converters\Interfaces\IDataClassToLoadoutListConverter.cs" />
     <Compile Include="Model\Container.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Services\ArsenalEquipmentExtractionService.cs" />
     <Compile Include="Services\Interfaces\IArsenalEquipmentExtractionService.cs" />
     <Compile Include="Services\Interfaces\IVirtualArsenalLoadoutService.cs" />
+    <Compile Include="Services\VirtualArsenalLoadoutService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

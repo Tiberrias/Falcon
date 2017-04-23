@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Falcon.Core.Model;
 using Falcon.Core.Services.Interfaces;
 using GalaSoft.MvvmLight;
@@ -10,15 +11,25 @@ namespace Falcon.GUI.ViewModel
     {
         private readonly IVirtualArsenalLoadoutService _arsenalLoadoutService;
 
-        public ObservableCollection<ManEquipment> MissionLoadouts { get; set; }
+        public ObservableCollection<Loadout> MissionLoadouts { get; set; }
 
-        public ManEquipment CurrentLoadout { get; set; }
+        public Loadout CurrentLoadout { get; set; }
 
-        public RelayCommand DoStuff { get; private set; }
+        public RelayCommand DoStuffCommand { get; private set; }
 
         public MissionLoadoutEditorViewModel(IVirtualArsenalLoadoutService arsenalLoadoutService)
         {
             _arsenalLoadoutService = arsenalLoadoutService;
+
+            DoStuffCommand = new RelayCommand(DoStuff);
+        }
+
+        private void DoStuff()
+        {
+            CurrentLoadout = new Loadout()
+            {
+                Name = Guid.NewGuid().ToString()
+            };
         }
     }
 }
