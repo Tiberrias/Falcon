@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Falcon.GUI.View
 {
     /// <summary>
-    /// Interaction logic for LoadoutControlView.xaml
+    /// Interaction logic for MissionLoadoutEditorView.xaml
     /// </summary>
-    public partial class LoadoutControlView : UserControl
+    public partial class MissionLoadoutEditorView : UserControl
     {
-        public LoadoutControlView()
+        public MissionLoadoutEditorView()
         {
             InitializeComponent();
         }
