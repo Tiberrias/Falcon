@@ -9,7 +9,7 @@ using Falcon.Core.Services.Interfaces;
 
 namespace Falcon.Core.Services
 {
-    class VirtualArsenalLoadoutService : IVirtualArsenalLoadoutService
+    public class VirtualArsenalLoadoutService : IVirtualArsenalLoadoutService
     {
         private readonly IConfigExtractionService _configExtractionService;
         private readonly IArsenalEquipmentExtractionService _arsenalEquipmentExtractionService;

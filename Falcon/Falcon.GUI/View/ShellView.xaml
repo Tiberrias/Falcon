@@ -8,6 +8,7 @@
         Title="Falcon" Height="300" Width="300"
         DataContext="{Binding ShellViewModel, Source={StaticResource Locator}}">
     <Grid>
-        
+        <local:MissionLoadoutEditorView></local:MissionLoadoutEditorView>
+        <!--<ContentControl Content="{Binding CurrentViewModel}"></ContentControl>-->
     </Grid>
 </Window>

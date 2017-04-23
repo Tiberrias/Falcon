@@ -5,5 +5,10 @@ namespace Falcon.GUI.ViewModel
     public class ShellViewModel : ViewModelBase
     {
         public ViewModelBase CurrentViewModel { get; set; }
+
+        //public ShellViewModel(MissionLoadoutEditorViewModel missionLoadoutEditorViewModel)
+        //{
+        //    CurrentViewModel = missionLoadoutEditorViewModel;
+        //}
     }
 }

@@ -4,9 +4,11 @@ using Falcon.Core.Model;
 using Falcon.Core.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using PropertyChanged;
 
 namespace Falcon.GUI.ViewModel
 {
+    [ImplementPropertyChanged]
     public class MissionLoadoutEditorViewModel : ViewModelBase
     {
         private readonly IVirtualArsenalLoadoutService _arsenalLoadoutService;
