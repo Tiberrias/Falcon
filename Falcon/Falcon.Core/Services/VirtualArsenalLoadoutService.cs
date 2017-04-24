@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ArmaConfigParser.ConfigReader.Interfaces;
 using ArmaConfigParser.Wrapper.Interfaces;
@@ -37,7 +38,7 @@ namespace Falcon.Core.Services
 
         public List<string> GetPossibleConfigVarsFilepaths()
         {
-            var files =  _directoryWrapper.GetFiles(_configurationService.DefaultProfileVarsFileSearchLocation);
+            var files =  _directoryWrapper.GetFiles(Environment.ExpandEnvironmentVariables(_configurationService.DefaultProfileVarsFileSearchLocation));
 
             var possibleConfigVarsFiles = files.Where(x => x.EndsWith(".vars.Arma3Profile")).ToList();
             return possibleConfigVarsFiles;
