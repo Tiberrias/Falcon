@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="ManEquipment.Headgear">Headgear:</system:String>
+    <system:String x:Key="ManEquipment.Goggles">Goggles:</system:String>
+    <system:String x:Key="ManEquipment.Binocular">Binocular:</system:String>
+    <system:String x:Key="ManEquipment.AssignedItems">Assigned Items:</system:String>
+    <system:String x:Key="ManEquipment.Uniform">Uniform:</system:String>
+    <system:String x:Key="ManEquipment.Vest">Vest:</system:String>
+    <system:String x:Key="ManEquipment.Backpack">Backpack:</system:String>
+    <system:String x:Key="ManEquipment.PrimaryWeapon">Primary Weapon:</system:String>
+    <system:String x:Key="ManEquipment.Sidearm">Sidearm:</system:String>
+    <system:String x:Key="ManEquipment.SecondaryWeapon">Secondary Weapon:</system:String>
+    <system:String x:Key="Container.Items">Items:</system:String>
+    <system:String x:Key="Weapon.Attachments">Attachments:</system:String>
+    <system:String x:Key="Weapon.LoadedMagazine">Loaded Magazine:</system:String>
+</ResourceDictionary>

@@ -3,12 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Falcon.GUI.View"
         mc:Ignorable="d"
-        Title="Falcon" Height="300" Width="300"
+        Title="Falcon" Height="300" Width="300" MinWidth="500" MinHeight="400"
         DataContext="{Binding ShellViewModel, Source={StaticResource Locator}}">
     <Grid>
-        <local:MissionLoadoutEditorView></local:MissionLoadoutEditorView>
-        <!--<ContentControl Content="{Binding CurrentViewModel}"></ContentControl>-->
+        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
     </Grid>
 </Window>

@@ -4,18 +4,153 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="500">
     <Grid DataContext="{Binding MissionLoadoutEditorViewModel, Source={StaticResource Locator}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Hello WPF!"></TextBlock>
+        <Button Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Content="Click" Command="{Binding DoStuffCommand}"></Button>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CurrentLoadout.Name}"></TextBlock>
-        <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Content="Click" Command="{Binding DoStuffCommand}"></Button>
+        <ListBox Grid.Column="0" Grid.Row="1"
+                 Margin ="5,5,5,5" x:Name="LoadoutsList"
+                 ItemsSource="{Binding MissionLoadouts}"
+                 SelectedItem="{Binding CurrentLoadout, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"
+                    Margin="5,5,5,5">
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Headgear}}"/>
+                <TextBox Margin="10,0,0,0" Text="{Binding CurrentLoadout.ManEquipment.Headgear.Classname}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Goggles}}"/>
+                <TextBox Margin="10,0,0,0" Text="{Binding CurrentLoadout.ManEquipment.Goggles.Classname}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Binocular}}"/>
+                <TextBox Margin="10,0,0,0" Text="{Binding CurrentLoadout.ManEquipment.Binocular.Classname}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.PrimaryWeapon}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.PrimaryWeapon.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.Attachments}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="PrimaryWeaponAttachmentList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.PrimaryWeapon.Attachments}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.LoadedMagazine}}"/>
+                    <TextBox Margin="20,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.PrimaryWeapon.Classname}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Sidearm}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.Sidearm.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.Attachments}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="SidearmAttachmentList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.Sidearm.Attachments}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.LoadedMagazine}}"/>
+                    <TextBox Margin="20,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.Sidearm.Classname}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.SecondaryWeapon}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.SecondaryWeapon.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.Attachments}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="SecondaryWeaponAttachmentList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.SecondaryWeapon.Attachments}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Weapon.LoadedMagazine}}"/>
+                    <TextBox Margin="20,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.SecondaryWeapon.Classname}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Uniform}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.Uniform.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Container.Items}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="UniformItemsList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.Uniform.Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Vest}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.Vest.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Container.Items}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="VestItemsList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.Vest.Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="{Binding Source={StaticResource ManEquipment.Backpack}}"/>
+                <StackPanel>
+                    <TextBox Margin="10,0,0,0" 
+                        Text="{Binding CurrentLoadout.ManEquipment.Backpack.Classname}"/>
+                    <Label Margin="10,0,0,0" Content="{Binding Source={StaticResource Container.Items}}"/>
+                    <ListView Margin="20,0,0,0" Background="Transparent" 
+                        x:Name="BackpackItemsList"
+                        ItemsSource="{Binding CurrentLoadout.ManEquipment.Backpack.Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Classname}" BorderThickness="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
