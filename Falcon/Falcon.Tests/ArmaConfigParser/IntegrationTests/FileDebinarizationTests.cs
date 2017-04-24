@@ -2,8 +2,8 @@
 using System.IO;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
-using ArmaConfigParser.Wrapper;
 using Falcon.Tests.Properties;
+using Falcon.Utilities.Wrappers;
 using Moq;
 using NUnit.Framework;
 

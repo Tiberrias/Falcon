@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Content="Click" Command="{Binding DoStuffCommand}"></Button>
+        <Button Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Content="Click" Command="{Binding ImportCommand}"></Button>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CurrentLoadout.Name}"></TextBlock>
         <ListBox Grid.Column="0" Grid.Row="1"
                  Margin ="5,5,5,5" x:Name="LoadoutsList"

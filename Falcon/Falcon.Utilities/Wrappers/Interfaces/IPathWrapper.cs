@@ -1,4 +1,4 @@
-﻿namespace ArmaConfigParser.Wrapper.Interfaces
+﻿namespace Falcon.Utilities.Wrappers.Interfaces
 {
     public interface IPathWrapper
     {

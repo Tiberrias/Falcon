@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using ArmaConfigParser.Wrapper.Interfaces;
+using Falcon.Utilities.Wrappers.Interfaces;
 
-namespace ArmaConfigParser.Wrapper
+namespace Falcon.Utilities.Wrappers
 {
     [ExcludeFromCodeCoverage]
     public class ProcessWrapper : IProcessWrapper

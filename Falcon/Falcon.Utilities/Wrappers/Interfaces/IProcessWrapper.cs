@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace ArmaConfigParser.Wrapper.Interfaces
+namespace Falcon.Utilities.Wrappers.Interfaces
 {
     public interface IProcessWrapper
     {

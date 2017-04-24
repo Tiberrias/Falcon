@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using ArmaConfigParser.Wrapper.Interfaces;
+using Falcon.Utilities.Wrappers.Interfaces;
 
-namespace ArmaConfigParser.Wrapper
+namespace Falcon.Utilities.Wrappers
 {
     public class DirectoryWrapper : IDirectoryWrapper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using ArmaConfigParser.ConfigReader.Interfaces;
 using ArmaConfigParser.Configuration;
-using ArmaConfigParser.Wrapper.Interfaces;
+using Falcon.Utilities.Wrappers.Interfaces;
 
 namespace ArmaConfigParser.ConfigReader
 {

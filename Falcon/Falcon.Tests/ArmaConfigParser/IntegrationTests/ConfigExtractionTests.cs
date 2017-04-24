@@ -5,6 +5,7 @@ using ArmaConfigParser.Configuration;
 using ArmaConfigParser.Modules;
 using Falcon.Tests.Configuration;
 using Falcon.Tests.Properties;
+using Falcon.Utilities.Modules;
 using Ninject;
 using NUnit.Framework;
 
@@ -19,7 +20,7 @@ namespace Falcon.Tests.ArmaConfigParser.IntegrationTests
         [SetUp]
         public void SetUp()
         {
-            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule());
+            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule(), new UtilitiesNinjectModule());
             kernel.Bind<IConfigurationService>().To<ConfigurationServiceTestImplementation>();
 
             _sut = kernel.Get<ConfigExtractionService>();

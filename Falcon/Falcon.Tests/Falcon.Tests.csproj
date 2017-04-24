@@ -72,6 +72,7 @@
     <Compile Include="Falcon.Core\Services\ArsenalEquipmentExtractionServiceTests.cs" />
     <Compile Include="ArmaConfigParser\IntegrationTests\ConfigExtractionTests.cs" />
     <Compile Include="ArmaConfigParser\IntegrationTests\FileDebinarizationTests.cs" />
+    <Compile Include="Falcon.GUI\ViewModel\MissionLoadoutEditorViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +104,14 @@
     <ProjectReference Include="..\Falcon.Core\Falcon.Core.csproj">
       <Project>{b8093a20-546c-4e6b-b5a9-edb96946066b}</Project>
       <Name>Falcon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Falcon.GUI\Falcon.GUI.csproj">
+      <Project>{13d52d7c-74ea-4971-8f2b-9ef89a32e50c}</Project>
+      <Name>Falcon.GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Falcon.Utilities\Falcon.Utilities.csproj">
+      <Project>{27af9a6b-640a-45fb-b123-0727b7b6294d}</Project>
+      <Name>Falcon.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

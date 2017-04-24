@@ -85,14 +85,6 @@
     <Compile Include="Tools\PeekableStringReaderAdapter.cs" />
     <Compile Include="Tools\StringHelper.cs" />
     <Compile Include="Tools\TokenizedConfigValidator.cs" />
-    <Compile Include="Wrapper\FileWrapper.cs" />
-    <Compile Include="Wrapper\DirectoryWrapper.cs" />
-    <Compile Include="Wrapper\Interfaces\IDirectoryWrapper.cs" />
-    <Compile Include="Wrapper\Interfaces\IFileWrapper.cs" />
-    <Compile Include="Wrapper\Interfaces\IPathWrapper.cs" />
-    <Compile Include="Wrapper\Interfaces\IProcessWrapper.cs" />
-    <Compile Include="Wrapper\PathWrapper.cs" />
-    <Compile Include="Wrapper\ProcessWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,7 +95,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Falcon.Utilities\Falcon.Utilities.csproj">
+      <Project>{27af9a6b-640a-45fb-b123-0727b7b6294d}</Project>
+      <Name>Falcon.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

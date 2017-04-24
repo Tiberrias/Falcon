@@ -7,6 +7,7 @@ using Falcon.Core.Modules;
 using Falcon.Core.Services;
 using Falcon.Tests.Configuration;
 using Falcon.Tests.Properties;
+using Falcon.Utilities.Modules;
 using FluentAssertions;
 using Ninject;
 using NUnit.Framework;
@@ -14,6 +15,7 @@ using NUnit.Framework;
 namespace Falcon.Tests.Falcon.Core.Integration
 {
     [TestFixture(Category = "Integration")]
+    [Ignore("Integration tests ignored")]
     public class LoadoutExtractionTests
     {
         private ConfigExtractionService _configExtractionService;
@@ -24,7 +26,7 @@ namespace Falcon.Tests.Falcon.Core.Integration
         [SetUp]
         public void SetUp()
         {
-            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule(), new FalconCoreNinjectModule());
+            StandardKernel kernel = new StandardKernel(new ArmaConfigParserNinjectModule(), new FalconCoreNinjectModule(), new UtilitiesNinjectModule());
             kernel.Bind<IConfigurationService>().To<ConfigurationServiceTestImplementation>();
 
             _configExtractionService = kernel.Get<ConfigExtractionService>();

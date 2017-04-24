@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using ArmaConfigParser.ConfigReader;
 using ArmaConfigParser.Configuration;
-using ArmaConfigParser.Wrapper.Interfaces;
+using Falcon.Utilities.Wrappers.Interfaces;
 using Moq;
 using NUnit.Framework;
 

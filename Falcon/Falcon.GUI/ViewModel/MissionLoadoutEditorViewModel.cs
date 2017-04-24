@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using Falcon.Core.Model;
 using Falcon.Core.Services.Interfaces;
@@ -19,17 +17,17 @@ namespace Falcon.GUI.ViewModel
 
         public Loadout CurrentLoadout { get; set; }
 
-        public RelayCommand DoStuffCommand { get; private set; }
+        public RelayCommand ImportCommand { get; private set; }
 
         public MissionLoadoutEditorViewModel(IVirtualArsenalLoadoutService arsenalLoadoutService)
         {
             _arsenalLoadoutService = arsenalLoadoutService;
 
             MissionLoadouts = new ObservableCollection<Loadout>();
-            DoStuffCommand = new RelayCommand(DoStuff);
+            ImportCommand = new RelayCommand(Import);
         }
 
-        private void DoStuff()
+        private void Import()
         {
             var arsenalFilePaths = _arsenalLoadoutService.GetPossibleConfigVarsFilepaths();
             if (arsenalFilePaths.Count == 1)
