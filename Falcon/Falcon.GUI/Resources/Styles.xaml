@@ -7,6 +7,10 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+    <Style x:Key="Style.LoadoutListItems" TargetType="ListBoxItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
     <Style x:Key="Style.EquipmentItemsList" TargetType="ListView">
         <Setter Property="MaxHeight" Value="100"></Setter>
@@ -15,8 +19,8 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="FontWeight" Value="Bold"></Setter>
-    </Style>
+        <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     <Style x:Key="Style.EquipmentItemLabelIndented" TargetType="Label">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>

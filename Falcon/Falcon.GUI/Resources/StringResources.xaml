@@ -14,4 +14,8 @@
     <system:String x:Key="Container.Items">Items:</system:String>
     <system:String x:Key="Weapon.Attachments">Attachments:</system:String>
     <system:String x:Key="Weapon.LoadedMagazine">Loaded Magazine:</system:String>
+
+    <system:String x:Key="SelectLoadoutsView.ArsenalLoadouts">Imported Loadouts</system:String>
+    <system:String x:Key="SelectLoadoutsView.MissionLoadouts">Selected Loadouts</system:String>
+    <system:String x:Key="SelectLoadoutsView.Confirm">Confirm</system:String>
 </ResourceDictionary>

@@ -12,15 +12,14 @@ namespace Falcon.GUI.ViewModel
             _kernel = NinjectConfiguration.LoadKernel();
         }
 
-        public ShellViewModel ShellViewModel
-        {
-            get { return _kernel.Get<ShellViewModel>(); }
-        }
+        public ShellViewModel ShellViewModel => _kernel.Get<ShellViewModel>();
 
-        public MissionLoadoutEditorViewModel MissionLoadoutEditorViewModel
-        {
-            get { return _kernel.Get<MissionLoadoutEditorViewModel>(); }
-        }
+        public MissionLoadoutEditorViewModel MissionLoadoutEditorViewModel => _kernel.Get<MissionLoadoutEditorViewModel>();
+
+        public ImportLoadoutsViewModel ImportLoadoutsViewModel => _kernel.Get<ImportLoadoutsViewModel>();
+
+        public SelectLoadoutsViewModel SelectLoadoutsViewModel => _kernel.Get<SelectLoadoutsViewModel>();
+        
         
         public static void Cleanup()
         {

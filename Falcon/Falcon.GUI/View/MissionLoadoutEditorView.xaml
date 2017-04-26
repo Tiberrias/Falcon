@@ -19,7 +19,8 @@
         <ListBox Grid.Column="0" Grid.Row="1"
                  Margin ="5,5,5,5" x:Name="LoadoutsList"
                  ItemsSource="{Binding MissionLoadouts}"
-                 SelectedItem="{Binding CurrentLoadout, Mode=TwoWay}">
+                 SelectedItem="{Binding CurrentLoadout, Mode=TwoWay}"
+                 ItemContainerStyle="{StaticResource Style.LoadoutListItems}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
