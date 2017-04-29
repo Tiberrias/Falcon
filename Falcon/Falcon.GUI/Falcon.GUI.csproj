@@ -87,11 +87,16 @@
     <Compile Include="Configuration\ConfigurationService.cs" />
     <Compile Include="Configuration\Ninject\FalconGuiNinjectModule.cs" />
     <Compile Include="Configuration\Ninject\NinjectConfiguration.cs" />
+    <Compile Include="ValueConverters\ViewModelBaseToStyleConverter.cs" />
+    <Compile Include="ViewModel\FalconViewModel.cs" />
     <Compile Include="ViewModel\ImportLoadoutsViewModel.cs" />
     <Compile Include="ViewModel\SelectLoadoutsViewModel.cs" />
     <Compile Include="ViewModel\MissionLoadoutEditorViewModel.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\FalconView.xaml.cs">
+      <DependentUpon>FalconView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ImportLoadoutsView.xaml.cs">
       <DependentUpon>ImportLoadoutsView.xaml</DependentUpon>
     </Compile>
@@ -117,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FalconView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +171,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />

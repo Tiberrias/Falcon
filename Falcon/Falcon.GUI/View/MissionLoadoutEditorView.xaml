@@ -14,8 +14,22 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Content="Click" Command="{Binding ImportCommand}"></Button>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CurrentLoadout.Name}"></TextBlock>
+        
+        <Label Grid.Column="0" Grid.Row="0" 
+                Style="{StaticResource Style.LoadoutViewHeader}"
+                Content="{StaticResource MissionLoadoutEditorView.MissionLoadouts}"/>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0"  
+                   Style="{StaticResource Style.LoadoutViewHeader}"
+                   Content="{StaticResource MissionLoadoutEditorView.SelectedLoadout}"/>
+            <Button Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" 
+                    Content="{StaticResource MissionLoadoutEditorView.Confirm}" Command="{Binding SaveCommand}"/>
+        </Grid>
+        
         <ListBox Grid.Column="0" Grid.Row="1"
                  Margin ="5,5,5,5" x:Name="LoadoutsList"
                  ItemsSource="{Binding MissionLoadouts}"

@@ -14,6 +14,8 @@ namespace Falcon.GUI.ViewModel
 
         public ShellViewModel ShellViewModel => _kernel.Get<ShellViewModel>();
 
+        public FalconViewModel FalconViewModel => _kernel.Get<FalconViewModel>();
+
         public MissionLoadoutEditorViewModel MissionLoadoutEditorViewModel => _kernel.Get<MissionLoadoutEditorViewModel>();
 
         public ImportLoadoutsViewModel ImportLoadoutsViewModel => _kernel.Get<ImportLoadoutsViewModel>();

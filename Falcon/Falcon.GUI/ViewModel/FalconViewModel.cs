@@ -1,12 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
+using PropertyChanged;
 
 namespace Falcon.GUI.ViewModel
 {
-    public class ShellViewModel : ViewModelBase
+    [ImplementPropertyChanged]
+    public class FalconViewModel : ViewModelBase
     {
         public ViewModelBase CurrentViewModel { get; set; }
 
-        public ShellViewModel(FalconViewModel viewModel)
+        public FalconViewModel(ImportLoadoutsViewModel viewModel)
         {
             CurrentViewModel = viewModel;
         }

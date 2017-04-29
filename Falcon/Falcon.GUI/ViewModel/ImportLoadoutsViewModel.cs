@@ -17,6 +17,7 @@ namespace Falcon.GUI.ViewModel
         {
             _arsenalLoadoutService = arsenalLoadoutService;
             
+            ImportCommand = new RelayCommand(Import);
         }
 
         private void Import()
@@ -25,7 +26,7 @@ namespace Falcon.GUI.ViewModel
             if (arsenalFilePaths.Count == 1)
             {
                 var importedLoadouts = _arsenalLoadoutService.ImportLoadouts(arsenalFilePaths.First());
-
+                
             }
         }
     }

@@ -15,7 +15,20 @@
     <system:String x:Key="Weapon.Attachments">Attachments:</system:String>
     <system:String x:Key="Weapon.LoadedMagazine">Loaded Magazine:</system:String>
 
+    <system:String x:Key="FalconView.Import">1. Import</system:String>
+    <system:String x:Key="FalconView.Select">2. Select</system:String>
+    <system:String x:Key="FalconView.Edit">3. Edit</system:String>
+    <system:String x:Key="FalconView.Save">4. Save Script</system:String>
+
+    <system:String x:Key="ImportLoadoutsView.Instructions">Press 'Import' to automatically load loadouts from arma 3 config files.</system:String>
+    <system:String x:Key="ImportLoadoutsView.NoConfigFileInstructions">Please provide valid path to {your-profile}.vars.Arma3Config file.</system:String>
+    <system:String x:Key="ImportLoadoutsView.Import">Import</system:String>
+    
     <system:String x:Key="SelectLoadoutsView.ArsenalLoadouts">Imported Loadouts</system:String>
     <system:String x:Key="SelectLoadoutsView.MissionLoadouts">Selected Loadouts</system:String>
     <system:String x:Key="SelectLoadoutsView.Confirm">Confirm</system:String>
+
+    <system:String x:Key="MissionLoadoutEditorView.MissionLoadouts">Mission Loadouts</system:String>
+    <system:String x:Key="MissionLoadoutEditorView.SelectedLoadout">Selected Loadout</system:String>
+    <system:String x:Key="MissionLoadoutEditorView.Confirm">Next step</system:String>
 </ResourceDictionary>

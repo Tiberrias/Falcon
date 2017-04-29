@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Falcon.GUI.View.FalconView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:valueConverters="clr-namespace:Falcon.GUI.ValueConverters"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="500">
+    <UserControl.Resources>
+        <valueConverters:ViewModelBaseToStyleConverter x:Key="BarStyleConverter"
+             HighlightedStyle="{StaticResource Style.LoadoutViewHeader}" NormalStyle="{StaticResource Style.EquipmentItemLabelIndented}" />
+    </UserControl.Resources>
+    <Grid DataContext="{Binding FalconViewModel, Source={StaticResource Locator}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Style="{Binding Converter={StaticResource BarStyleConverter},
+                Path = CurrentViewModel, ConverterParameter=Import}" Content="{StaticResource FalconView.Import}"/>
+            <Label Grid.Column="1" Content="&gt;&gt;"/>
+            <Label Grid.Column="2" Style="{Binding Converter={StaticResource BarStyleConverter},
+                Path = CurrentViewModel, ConverterParameter=Select}" Content="{StaticResource FalconView.Select}"/>
+            <Label Grid.Column="3" Content="&gt;&gt;"/>
+            <Label Grid.Column="4" Style="{Binding Converter={StaticResource BarStyleConverter},
+                Path = CurrentViewModel, ConverterParameter=Edit}" Content="{StaticResource FalconView.Edit}"/>
+            <Label Grid.Column="5" Content="&gt;&gt;"/>
+            <Label Grid.Column="6" Style="{Binding Converter={StaticResource BarStyleConverter},
+                Path = CurrentViewModel, ConverterParameter=Save}" Content="{StaticResource FalconView.Save}"/>
+        </Grid>
+
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
+    </Grid>
+</UserControl>
