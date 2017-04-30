@@ -20,9 +20,11 @@
     <system:String x:Key="FalconView.Edit">3. Edit</system:String>
     <system:String x:Key="FalconView.Save">4. Save Script</system:String>
 
-    <system:String x:Key="ImportLoadoutsView.Instructions">Press 'Import' to automatically load loadouts from arma 3 config files.</system:String>
+    <system:String x:Key="ImportLoadoutsView.Instructions" xml:space="preserve">Press 'Import' to automatically load loadouts from arma 3 config files.
+Press 'Select file' to load loadouts from specific file.</system:String>
     <system:String x:Key="ImportLoadoutsView.NoConfigFileInstructions">Please provide valid path to {your-profile}.vars.Arma3Config file.</system:String>
     <system:String x:Key="ImportLoadoutsView.Import">Import</system:String>
+    <system:String x:Key="ImportLoadoutsView.SelectSpecificFile">Select file</system:String>
     
     <system:String x:Key="SelectLoadoutsView.ArsenalLoadouts">Imported Loadouts</system:String>
     <system:String x:Key="SelectLoadoutsView.MissionLoadouts">Selected Loadouts</system:String>

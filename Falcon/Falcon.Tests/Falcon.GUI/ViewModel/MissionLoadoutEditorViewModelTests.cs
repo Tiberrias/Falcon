@@ -1,6 +1,4 @@
-﻿using Falcon.Core.Services.Interfaces;
-using Falcon.GUI.ViewModel;
-using Moq;
+﻿using Falcon.GUI.ViewModel;
 using NUnit.Framework;
 
 namespace Falcon.Tests.Falcon.GUI.ViewModel
@@ -15,6 +13,5 @@ namespace Falcon.Tests.Falcon.GUI.ViewModel
         {
             _sut = new MissionLoadoutEditorViewModel();
         }
-
     }
 }

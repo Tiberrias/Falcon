@@ -9,5 +9,10 @@ namespace Falcon.Utilities.Wrappers
         {
             return Directory.GetFiles(path);
         }
+
+        public string[] GetDirectories(string path)
+        {
+            return Directory.GetDirectories(path);
+        }
     }
 }

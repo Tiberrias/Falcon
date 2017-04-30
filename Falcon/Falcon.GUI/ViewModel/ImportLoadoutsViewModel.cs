@@ -1,40 +1,98 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Falcon.Core.Model;
+using Falcon.Core.Model.Profiles;
 using Falcon.Core.Services.Interfaces;
 using Falcon.GUI.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using PropertyChanged;
 
 namespace Falcon.GUI.ViewModel
 {
+    [ImplementPropertyChanged]
     public class ImportLoadoutsViewModel : ViewModelBase
     {
         private readonly IVirtualArsenalLoadoutService _arsenalLoadoutService;
+        private readonly IVirtualArsenalFilesLocatorService _arsenalFilesLocatorService;
+
+        public bool ShowSelectFromMultipleProfiles { get; set; }
+
+        public bool ShowImport { get; set; }
+
+        public ObservableCollection<ProfileInfo> Profiles { get; set; }
 
         public RelayCommand ImportCommand { get; private set; }
 
-        public ImportLoadoutsViewModel(IVirtualArsenalLoadoutService arsenalLoadoutService)
+        public RelayCommand SelectFileCommand { get; private set; }
+
+        public ImportLoadoutsViewModel(
+            IVirtualArsenalLoadoutService arsenalLoadoutService,
+            IVirtualArsenalFilesLocatorService arsenalFilesLocatorService)
         {
             _arsenalLoadoutService = arsenalLoadoutService;
-            
+            _arsenalFilesLocatorService = arsenalFilesLocatorService;
+
             ImportCommand = new RelayCommand(Import);
+            SelectFileCommand = new RelayCommand(SelectFile);
+            ShowImport = true;
+        }
+
+        public void ClearViewModel()
+        {
+            ShowSelectFromMultipleProfiles = false;
+            ShowImport = true;
+
+            Profiles?.Clear();
+        }
+
+        private void SelectFile()
+        {
+            
         }
 
         private void Import()
         {
-            var arsenalFilePaths = _arsenalLoadoutService.GetPossibleConfigVarsFilepaths();
-            if (arsenalFilePaths.Count == 1)
+            var arsenalFilePaths = _arsenalFilesLocatorService.GetPossibleConfigVarsFilepaths();
+            switch (arsenalFilePaths.Count)
             {
-                var importedLoadouts = _arsenalLoadoutService.ImportLoadouts(arsenalFilePaths.First());
+                case 1:
+                    var importedLoadouts = _arsenalLoadoutService.ImportLoadouts(arsenalFilePaths.First());
+                    ProceedToNextView(importedLoadouts);
+                    break;
+                case 0:
 
-                var message = new LoadoutsCollectionMessage()
-                {
-                    Loadouts = new ObservableCollection<Loadout>(importedLoadouts)
-                };
-
-                MessengerInstance.Send(message, FalconMessageToken.ShowSelectionView);
+                    break;
+                default:
+                    ShowSelectFromMultipleProfiles = true;
+                    Profiles = GetProfileInfosCollectionFromPossiblePaths(arsenalFilePaths);
+                    break;
             }
+        }
+
+        private ObservableCollection<ProfileInfo> GetProfileInfosCollectionFromPossiblePaths(IEnumerable<string> arsenalFilePaths)
+        {
+            return new ObservableCollection<ProfileInfo>(
+                    arsenalFilePaths.Select(
+                        path =>
+                            new ProfileInfo
+                            {
+                                Path = path,
+                                Name = path.Split('\\').Last()
+                                    .Replace(".vars.Arma3Profile", String.Empty)
+                            }));
+        }
+
+        private void ProceedToNextView(List<Loadout> importedLoadouts)
+        {
+            var message = new LoadoutsCollectionMessage()
+            {
+                Loadouts = new ObservableCollection<Loadout>(importedLoadouts)
+            };
+
+            MessengerInstance.Send(message, FalconMessageToken.ShowSelectionView);
         }
     }
 }

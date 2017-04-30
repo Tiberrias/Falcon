@@ -7,6 +7,5 @@ namespace Falcon.Core.Services.Interfaces
     {
         List<Loadout> ImportLoadouts(string configVarsFilepath);
 
-        List<string> GetPossibleConfigVarsFilepaths();
     }
 }

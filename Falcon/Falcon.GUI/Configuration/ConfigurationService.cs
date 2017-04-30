@@ -14,5 +14,11 @@ namespace Falcon.GUI.Configuration
 
         public string DefaultProfileVarsFileSearchLocation
             => ConfigurationManager.AppSettings[nameof(DefaultProfileVarsFileSearchLocation)];
+
+        public string OtherProfilesVarsFileSearchLocation
+            => ConfigurationManager.AppSettings[nameof(OtherProfilesVarsFileSearchLocation)];
+
+        public string CustomProfileVarsFileSearchLocation
+            => ConfigurationManager.AppSettings[nameof(CustomProfileVarsFileSearchLocation)];
     }
 }

@@ -16,5 +16,10 @@ namespace Falcon.Utilities.Wrappers
         {
             return File.ReadAllText(path);
         }
+
+        public FileAttributes GetAttributes(string path)
+        {
+            return File.GetAttributes(path);
+        }
     }
 }
