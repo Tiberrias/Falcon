@@ -2,6 +2,7 @@
 using System.Linq;
 using Falcon.Core.Model;
 using Falcon.Core.Services.Interfaces;
+using Falcon.GUI.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -26,7 +27,13 @@ namespace Falcon.GUI.ViewModel
             if (arsenalFilePaths.Count == 1)
             {
                 var importedLoadouts = _arsenalLoadoutService.ImportLoadouts(arsenalFilePaths.First());
-                
+
+                var message = new LoadoutsCollectionMessage()
+                {
+                    Loadouts = new ObservableCollection<Loadout>(importedLoadouts)
+                };
+
+                MessengerInstance.Send(message, FalconMessageToken.ShowSelectionView);
             }
         }
     }

@@ -8,14 +8,15 @@
              d:DesignHeight="400" d:DesignWidth="500">
     <UserControl.Resources>
         <valueConverters:ViewModelBaseToStyleConverter x:Key="BarStyleConverter"
-             HighlightedStyle="{StaticResource Style.LoadoutViewHeader}" NormalStyle="{StaticResource Style.EquipmentItemLabelIndented}" />
+             HighlightedStyle="{StaticResource Style.FalconViewBar.HighlitedItem}" NormalStyle="{StaticResource Style.FalconViewBar.NormalItem}" />
     </UserControl.Resources>
     <Grid DataContext="{Binding FalconViewModel, Source={StaticResource Locator}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+        <Border Grid.Row="0"  Style="{StaticResource Style.FalconViewBar.Border}"/>
+        <Grid  Grid.Row="0" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -37,7 +38,8 @@
             <Label Grid.Column="6" Style="{Binding Converter={StaticResource BarStyleConverter},
                 Path = CurrentViewModel, ConverterParameter=Save}" Content="{StaticResource FalconView.Save}"/>
         </Grid>
-
+        
         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
     </Grid>
 </UserControl>
+

@@ -87,6 +87,9 @@
     <Compile Include="Configuration\ConfigurationService.cs" />
     <Compile Include="Configuration\Ninject\FalconGuiNinjectModule.cs" />
     <Compile Include="Configuration\Ninject\NinjectConfiguration.cs" />
+    <Compile Include="Messages\FalconMessageToken.cs" />
+    <Compile Include="Messages\LoadoutsCollectionMessage.cs" />
+    <Compile Include="Messages\ShowMessage.cs" />
     <Compile Include="ValueConverters\ViewModelBaseToStyleConverter.cs" />
     <Compile Include="ViewModel\FalconViewModel.cs" />
     <Compile Include="ViewModel\ImportLoadoutsViewModel.cs" />

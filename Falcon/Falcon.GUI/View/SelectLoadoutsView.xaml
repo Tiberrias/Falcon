@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
-    <Grid DataContext="{Binding SelectLoadoutsViewModel, Source={StaticResource Locator}}">
+    <Grid d:DataContext="{Binding SelectLoadoutsViewModel, Source={StaticResource Locator}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -59,9 +59,11 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Content="&gt;&gt;&gt;" Command="{Binding AddToMissionLoadoutsCommand}"/>
-        <Button Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" Content="&lt;&lt;&lt;" Command="{Binding RemoveFromMissionLoadoutsCommand}"/>
-        <Button Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" Content="{Binding Source={StaticResource SelectLoadoutsView.Confirm}}"
+        <Button Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Content="&gt;&gt;&gt;" 
+                Command="{Binding AddToMissionLoadoutsCommand}"/>
+        <Button Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" Content="&lt;&lt;&lt;" 
                 Command="{Binding RemoveFromMissionLoadoutsCommand}"/>
+        <Button Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" Content="{Binding Source={StaticResource SelectLoadoutsView.Confirm}}"
+                Command="{Binding ConfirmCommand}"/>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Falcon.Core.Model;
+using Falcon.GUI.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PropertyChanged;
@@ -23,6 +24,9 @@ namespace Falcon.GUI.ViewModel
 
         private void Save()
         {
+            var message = new ShowMessage();
+
+            MessengerInstance.Send(message, FalconMessageToken.ShowImportView);
         }
     }
 }
