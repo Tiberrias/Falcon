@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 using Falcon.GUI.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;

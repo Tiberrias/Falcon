@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Falcon.Core.Model
+namespace Falcon.Core.Model.Loadouts
 {
     public class ManEquipment
     {

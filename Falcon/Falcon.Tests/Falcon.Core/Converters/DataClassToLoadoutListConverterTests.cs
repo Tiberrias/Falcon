@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ArmaConfigParser.ConfigModel;
 using Falcon.Core.Converters;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 using FluentAssertions;
 using NUnit.Framework;
 

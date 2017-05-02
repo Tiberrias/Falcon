@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ArmaConfigParser.ConfigReader.Interfaces;
 using Falcon.Core.Converters.Interfaces;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 using Falcon.Core.Services.Interfaces;
 
 namespace Falcon.Core.Services

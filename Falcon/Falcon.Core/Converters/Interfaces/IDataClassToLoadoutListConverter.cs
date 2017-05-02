@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ArmaConfigParser.ConfigModel;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 
 namespace Falcon.Core.Converters.Interfaces
 {

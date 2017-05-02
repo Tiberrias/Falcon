@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ArmaConfigParser.ConfigModel;
 using Falcon.Core.Converters.Interfaces;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 
 namespace Falcon.Core.Converters
 {

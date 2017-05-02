@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 using Falcon.Core.Model.Profiles;
 using Falcon.Core.Services.Interfaces;
 using Falcon.GUI.Messages;

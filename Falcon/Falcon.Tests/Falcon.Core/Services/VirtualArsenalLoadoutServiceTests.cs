@@ -2,7 +2,7 @@
 using ArmaConfigParser.ConfigModel;
 using ArmaConfigParser.ConfigReader.Interfaces;
 using Falcon.Core.Converters.Interfaces;
-using Falcon.Core.Model;
+using Falcon.Core.Model.Loadouts;
 using Falcon.Core.Services;
 using Falcon.Core.Services.Interfaces;
 using Moq;
