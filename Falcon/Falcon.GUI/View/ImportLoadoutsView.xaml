@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:valueConverters="clr-namespace:Falcon.GUI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
+    <UserControl.Resources>
+        <valueConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid d:DataContext="{Binding ImportLoadoutsViewModel, Source={StaticResource Locator}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -30,10 +34,11 @@
                        Text="{StaticResource ImportLoadoutsView.Instructions}"/>
             <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Padding="5,0,5,0"
                     HorizontalAlignment="Right"
-                    Content="{StaticResource ImportLoadoutsView.SelectSpecificFile}" Command="{Binding ImportCommand}"/>
+                    Content="{StaticResource ImportLoadoutsView.SelectSpecificFile}" Command="{Binding SelectFileCommand}"/>
             <Button Grid.Column="1" Grid.Row="1" Margin="5,5,5,5" Padding="5,0,5,0"
                     HorizontalAlignment="Left"
-                    Content="{StaticResource ImportLoadoutsView.Import}" Command="{Binding ImportCommand}"/>
+                    Content="{StaticResource ImportLoadoutsView.Import}" Command="{Binding ImportCommand}"
+                    Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}, Path=ShowImport}"/>
         </Grid>
     </Grid>
 </UserControl>

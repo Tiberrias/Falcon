@@ -50,7 +50,7 @@ namespace Falcon.GUI.ViewModel
 
         private void SelectFile()
         {
-            
+            ShowImport = false;
         }
 
         private void Import()
