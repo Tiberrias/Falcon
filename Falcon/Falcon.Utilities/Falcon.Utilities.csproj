@@ -36,6 +36,7 @@
     <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,8 +50,10 @@
     <Compile Include="Modules\UtilitiesNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wrappers\DirectoryWrapper.cs" />
+    <Compile Include="Dialogs\FileDialogService.cs" />
     <Compile Include="Wrappers\FileWrapper.cs" />
     <Compile Include="Wrappers\EnvironmentWrapper.cs" />
+    <Compile Include="Dialogs\Interfaces\IFileDialogService.cs" />
     <Compile Include="Wrappers\Interfaces\IDirectoryWrapper.cs" />
     <Compile Include="Wrappers\Interfaces\IEnvironmentWrapper.cs" />
     <Compile Include="Wrappers\Interfaces\IFileWrapper.cs" />

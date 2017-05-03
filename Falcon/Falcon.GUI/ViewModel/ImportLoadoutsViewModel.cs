@@ -6,6 +6,7 @@ using Falcon.Core.Model.Loadouts;
 using Falcon.Core.Model.Profiles;
 using Falcon.Core.Services.Interfaces;
 using Falcon.GUI.Messages;
+using Falcon.Utilities.Dialogs.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PropertyChanged;
@@ -17,6 +18,7 @@ namespace Falcon.GUI.ViewModel
     {
         private readonly IVirtualArsenalLoadoutService _arsenalLoadoutService;
         private readonly IVirtualArsenalFilesLocatorService _arsenalFilesLocatorService;
+        private readonly IFileDialogService _fileDialogService;
 
         public bool ShowSelectFromMultipleProfiles { get; set; }
 
@@ -30,10 +32,11 @@ namespace Falcon.GUI.ViewModel
 
         public ImportLoadoutsViewModel(
             IVirtualArsenalLoadoutService arsenalLoadoutService,
-            IVirtualArsenalFilesLocatorService arsenalFilesLocatorService)
+            IVirtualArsenalFilesLocatorService arsenalFilesLocatorService, IFileDialogService fileDialogService)
         {
             _arsenalLoadoutService = arsenalLoadoutService;
             _arsenalFilesLocatorService = arsenalFilesLocatorService;
+            _fileDialogService = fileDialogService;
 
             ImportCommand = new RelayCommand(Import);
             SelectFileCommand = new RelayCommand(SelectFile);
@@ -50,7 +53,13 @@ namespace Falcon.GUI.ViewModel
 
         private void SelectFile()
         {
-            ShowImport = false;
+            var filename = _fileDialogService.GetFileNameDialog();
+            if (String.IsNullOrEmpty(filename))
+            {
+                return;
+            }
+            var importedLoadouts = _arsenalLoadoutService.ImportLoadouts(filename);
+            ProceedToNextView(importedLoadouts);
         }
 
         private void Import()
