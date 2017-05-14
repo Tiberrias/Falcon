@@ -162,7 +162,11 @@
                         Style="{StaticResource Style.EquipmentItemsList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{StaticResource Item.ClassnameAndCountSeparator}" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{Binding Count}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListView>
@@ -181,7 +185,11 @@
                         Style="{StaticResource Style.EquipmentItemsList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{StaticResource Item.ClassnameAndCountSeparator}" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{Binding Count}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListView>
@@ -200,7 +208,11 @@
                         Style="{StaticResource Style.EquipmentItemsList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Classname}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{StaticResource Item.ClassnameAndCountSeparator}" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                <TextBox Text="{Binding Count}" BorderThickness="0" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListView>

@@ -14,6 +14,7 @@
     <system:String x:Key="Container.Items">Items:</system:String>
     <system:String x:Key="Weapon.Attachments">Attachments:</system:String>
     <system:String x:Key="Weapon.LoadedMagazine">Loaded Magazine:</system:String>
+    <system:String x:Key="Item.ClassnameAndCountSeparator">x</system:String>
 
     <system:String x:Key="FalconView.Import">1. Import</system:String>
     <system:String x:Key="FalconView.Select">2. Select</system:String>

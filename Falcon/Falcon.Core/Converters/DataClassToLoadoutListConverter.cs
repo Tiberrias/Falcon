@@ -4,6 +4,7 @@ using System.Linq;
 using ArmaConfigParser.ConfigModel;
 using Falcon.Core.Converters.Interfaces;
 using Falcon.Core.Model.Loadouts;
+using Falcon.Core.Services.Extensions;
 
 namespace Falcon.Core.Converters
 {
@@ -31,7 +32,7 @@ namespace Falcon.Core.Converters
                     var loadout = new Loadout
                     {
                         Name = currentLoadoutName,
-                        ManEquipment = GetSingleEquipment(item)
+                        ManEquipment = GetSingleEquipment(item).StackContainerItems()
                     };
                     result.Add(loadout);
                     currentLoadoutName = null;

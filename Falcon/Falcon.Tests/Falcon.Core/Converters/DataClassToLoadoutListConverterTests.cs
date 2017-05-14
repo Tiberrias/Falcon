@@ -469,8 +469,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_U_CDF_Fatigue_01",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_fieldDressing"},
-                                new Item {Classname = "ACE_EarPlugs"}
+                                new ItemStack {Classname = "ACE_fieldDressing", Count = 1},
+                                new ItemStack {Classname = "ACE_EarPlugs", Count = 1}
                             }
                         },
                         Vest = new Container
@@ -478,8 +478,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_V_6B23_6Sh92_CDF",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACRE_PRC343_ID_2"},
-                                new Item {Classname = "rhs_10Rnd_762x54mmR_7N1"}
+                                new ItemStack {Classname = "ACRE_PRC343_ID_2", Count = 1},
+                                new ItemStack {Classname = "rhs_10Rnd_762x54mmR_7N1", Count = 1}
                             }
                         },
                         Backpack =  new Container
@@ -487,8 +487,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "rhs_sidor",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_RangeCard"},
-                                new Item {Classname = "RH_8Rnd_762_tt33"}
+                                new ItemStack {Classname = "ACE_RangeCard", Count = 1},
+                                new ItemStack {Classname = "RH_8Rnd_762_tt33", Count = 1}
                             }
                         },
                         Headgear = new Item{Classname = "LOP_H_6B27M_CDF"},
@@ -959,8 +959,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_U_CDF_Fatigue_01",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_fieldDressing"},
-                                new Item {Classname = "ACE_EarPlugs"}
+                                new ItemStack {Classname = "ACE_fieldDressing", Count = 1},
+                                new ItemStack {Classname = "ACE_EarPlugs", Count = 1}
                             }
                         },
                         Vest = new Container
@@ -968,8 +968,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_V_6B23_6Sh92_CDF",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACRE_PRC343_ID_2"},
-                                new Item {Classname = "rhs_10Rnd_762x54mmR_7N1"}
+                                new ItemStack {Classname = "ACRE_PRC343_ID_2", Count = 1},
+                                new ItemStack {Classname = "rhs_10Rnd_762x54mmR_7N1", Count = 1}
                             }
                         },
                         Backpack =  new Container
@@ -977,8 +977,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "rhs_sidor",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_RangeCard"},
-                                new Item {Classname = "RH_8Rnd_762_tt33"}
+                                new ItemStack {Classname = "ACE_RangeCard", Count = 1},
+                                new ItemStack {Classname = "RH_8Rnd_762_tt33", Count = 1}
                             }
                         },
                         Headgear = new Item{Classname = "LOP_H_6B27M_CDF"},
@@ -1028,8 +1028,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_U_CDF_Fatigue_01",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_fieldDressing"},
-                                new Item {Classname = "ACE_EarPlugs"}
+                                new ItemStack {Classname = "ACE_fieldDressing", Count = 1},
+                                new ItemStack {Classname = "ACE_EarPlugs", Count = 1}
                             }
                         },
                         Vest = new Container
@@ -1037,8 +1037,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "LOP_V_6B23_6Sh92_CDF",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACRE_PRC343_ID_2"},
-                                new Item {Classname = "rhs_10Rnd_762x54mmR_7N1"}
+                                new ItemStack {Classname = "ACRE_PRC343_ID_2", Count = 1},
+                                new ItemStack {Classname = "rhs_10Rnd_762x54mmR_7N1", Count = 1}
                             }
                         },
                         Backpack =  new Container
@@ -1046,8 +1046,8 @@ namespace Falcon.Tests.Falcon.Core.Converters
                             Classname = "rhs_sidor",
                             Items = new List<Item>
                             {
-                                new Item {Classname = "ACE_RangeCard"},
-                                new Item {Classname = "RH_8Rnd_762_tt33"}
+                                new ItemStack {Classname = "ACE_RangeCard", Count = 1},
+                                new ItemStack {Classname = "RH_8Rnd_762_tt33", Count = 1}
                             }
                         },
                         Headgear = new Item{Classname = "LOP_H_6B27M_CDF"},
