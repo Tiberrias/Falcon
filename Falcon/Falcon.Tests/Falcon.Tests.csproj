@@ -68,6 +68,7 @@
     <Compile Include="Configuration\ConfigurationServiceTestImplementation.cs" />
     <Compile Include="ArmaConfigParser\Converters\TokensToConfigObjectsConverterTests.cs" />
     <Compile Include="Falcon.Core\Converters\DataClassToLoadoutListConverterTests.cs" />
+    <Compile Include="Falcon.Core\GearBuilderTests.cs" />
     <Compile Include="Falcon.Core\Integration\LoadoutExtractionTests.cs" />
     <Compile Include="Falcon.Core\Services\ArsenalEquipmentExtractionServiceTests.cs" />
     <Compile Include="ArmaConfigParser\IntegrationTests\ConfigExtractionTests.cs" />
